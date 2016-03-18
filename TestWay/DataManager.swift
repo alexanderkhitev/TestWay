@@ -79,28 +79,28 @@ public class DataManager {
                     print("Cannot to save in core data, \(error), \(error.userInfo)")
                 }
                 
-                for station in stations {
-                    guard let countryTitle = station["countryTitle"] as? String else { break }
-                    guard let stationPoint = station["point"] as? [String : AnyObject] else { break }
-                    guard let longitude = stationPoint["longitude"] as? Double else { break }
-                    guard let latitude = stationPoint["latitude"] as? Double else { break }
-                    guard let districtTitle = station["districtTitle"] as? String  else { break }
-                    guard let cityId = station["cityId"] as? NSNumber else { break }
-                    guard let cityTitle = station["cityTitle"] as? String else { break }
-                    guard let regionTitle = station["regionTitle"] as? String else { break }
-                    guard let stationId = station["stationId"] as? NSNumber else { break }
-                    guard let stationTitle = station["stationTitle"] as? String else { break }
-//                    // for station
-//                    @NSManaged var cityId: NSNumber?
-//                    @NSManaged var cityTitle: String?
-//                    @NSManaged var countryTitle: String?
-//                    @NSManaged var districtTitle: String?
-//                    @NSManaged var regionTitle: String?
-//                    @NSManaged var stationId: NSNumber?
-//                    @NSManaged var stationTitle: String?
-//                    @NSManaged var city: DepartureCity?
-//                    @NSManaged var point: DepartureStationPoint?
-                }
+//                for station in stations {
+//                    guard let countryTitle = station["countryTitle"] as? String else { break }
+//                    guard let stationPoint = station["point"] as? [String : AnyObject] else { break }
+//                    guard let longitude = stationPoint["longitude"] as? Double else { break }
+//                    guard let latitude = stationPoint["latitude"] as? Double else { break }
+//                    guard let districtTitle = station["districtTitle"] as? String  else { break }
+//                    guard let cityId = station["cityId"] as? NSNumber else { break }
+//                    guard let cityTitle = station["cityTitle"] as? String else { break }
+//                    guard let regionTitle = station["regionTitle"] as? String else { break }
+//                    guard let stationId = station["stationId"] as? NSNumber else { break }
+//                    guard let stationTitle = station["stationTitle"] as? String else { break }
+////                    // for station
+////                    @NSManaged var cityId: NSNumber?
+////                    @NSManaged var cityTitle: String?
+////                    @NSManaged var countryTitle: String?
+////                    @NSManaged var districtTitle: String?
+////                    @NSManaged var regionTitle: String?
+////                    @NSManaged var stationId: NSNumber?
+////                    @NSManaged var stationTitle: String?
+////                    @NSManaged var city: DepartureCity?
+////                    @NSManaged var point: DepartureStationPoint?
+//                }
 //                print("city")
             }
 //            Sync.changes(departureCity, inEntityNamed: "DepartureCity", dataStack: dataStack) { (error) -> Void in
