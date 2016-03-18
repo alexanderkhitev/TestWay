@@ -15,6 +15,7 @@
 		A65861FD1C9C69D6009F1CAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65861FB1C9C69D6009F1CAB /* LaunchScreen.storyboard */; };
 		A65862081C9C69D6009F1CAB /* TestWayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862071C9C69D6009F1CAB /* TestWayUITests.swift */; };
 		A658621A1C9C73AB009F1CAB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862191C9C73AB009F1CAB /* DataManager.swift */; };
+		A658621C1C9C74B7009F1CAB /* RouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		A65862071C9C69D6009F1CAB /* TestWayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWayUITests.swift; sourceTree = "<group>"; };
 		A65862091C9C69D6009F1CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A65862191C9C73AB009F1CAB /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewController.swift; sourceTree = "<group>"; };
 		A89C0163791F8EBC8199CA45 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 		A65862121C9C72F8009F1CAB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				A65861F81C9C69D6009F1CAB /* TestWay.xcdatamodeld in Sources */,
 				A658621A1C9C73AB009F1CAB /* DataManager.swift in Sources */,
 				A65861F01C9C69D6009F1CAB /* AppDelegate.swift in Sources */,
+				A658621C1C9C74B7009F1CAB /* RouteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
