@@ -16,6 +16,7 @@
 		A65862081C9C69D6009F1CAB /* TestWayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862071C9C69D6009F1CAB /* TestWayUITests.swift */; };
 		A658621A1C9C73AB009F1CAB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862191C9C73AB009F1CAB /* DataManager.swift */; };
 		A658621C1C9C74B7009F1CAB /* RouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */; };
+		A658621F1C9C7CB4009F1CAB /* allStations.json in Resources */ = {isa = PBXBuildFile; fileRef = A658621E1C9C7CB4009F1CAB /* allStations.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		A65862091C9C69D6009F1CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A65862191C9C73AB009F1CAB /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewController.swift; sourceTree = "<group>"; };
+		A658621E1C9C7CB4009F1CAB /* allStations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allStations.json; sourceTree = "<group>"; };
 		A89C0163791F8EBC8199CA45 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 				A65862141C9C7312009F1CAB /* Workers */,
 				A65862161C9C734B009F1CAB /* Interface */,
 				A65862171C9C7362009F1CAB /* Resource */,
+				A658621D1C9C7CA9009F1CAB /* Files */,
 				A65862181C9C7372009F1CAB /* CoreData */,
 				A65861FE1C9C69D6009F1CAB /* Info.plist */,
 			);
@@ -147,6 +150,14 @@
 				A65861F61C9C69D6009F1CAB /* TestWay.xcdatamodeld */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		A658621D1C9C7CA9009F1CAB /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				A658621E1C9C7CB4009F1CAB /* allStations.json */,
+			);
+			name = Files;
 			sourceTree = "<group>";
 		};
 		DDFAFDB08DD5779A4469F31A /* Frameworks */ = {
@@ -252,6 +263,7 @@
 			files = (
 				A65861FD1C9C69D6009F1CAB /* LaunchScreen.storyboard in Resources */,
 				A65861FA1C9C69D6009F1CAB /* Assets.xcassets in Resources */,
+				A658621F1C9C7CB4009F1CAB /* allStations.json in Resources */,
 				A65861F51C9C69D6009F1CAB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -42,8 +42,7 @@ public class DataManager {
         let json = try! NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments) as! [String : AnyObject]
         
         if let departureCity = json["citiesFrom"] as? [[String: AnyObject]] {
-            let key = departureCity.first!.keys
-            print(key)
+//            print(departureCity)
             Sync.changes(departureCity, inEntityNamed: "DepartureCity", dataStack: dataStack) { (error) -> Void in
                 if error != nil {
                     print(error?.localizedDescription)
@@ -54,11 +53,11 @@ public class DataManager {
         }
         
         if let hostCity = json["citiesTo"] as? [[String : AnyObject]] {
-            Sync.changes(hostCity, inEntityNamed: "HostCity", dataStack: dataStack) { (error) -> Void in
-                if error != nil {
-                    print(error?.localizedDescription)
-                }
-            }
+//            Sync.changes(hostCity, inEntityNamed: "HostCity", dataStack: dataStack) { (error) -> Void in
+//                if error != nil {
+//                    print(error?.localizedDescription)
+//                }
+//            }
         } else {
             print("there is an error in host city")
         }
