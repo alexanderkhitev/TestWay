@@ -17,6 +17,14 @@
 		A658621A1C9C73AB009F1CAB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862191C9C73AB009F1CAB /* DataManager.swift */; };
 		A658621C1C9C74B7009F1CAB /* RouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */; };
 		A658621F1C9C7CB4009F1CAB /* allStations.json in Resources */ = {isa = PBXBuildFile; fileRef = A658621E1C9C7CB4009F1CAB /* allStations.json */; };
+		A65862581C9C8B58009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862501C9C8B58009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */; };
+		A65862591C9C8B58009F1CAB /* DepartureStationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862511C9C8B58009F1CAB /* DepartureStationPoint.swift */; };
+		A658625A1C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862521C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift */; };
+		A658625B1C9C8B58009F1CAB /* DepartureCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862531C9C8B58009F1CAB /* DepartureCity.swift */; };
+		A658625C1C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862541C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift */; };
+		A658625D1C9C8B58009F1CAB /* DepartureStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862551C9C8B58009F1CAB /* DepartureStation.swift */; };
+		A658625E1C9C8B58009F1CAB /* DeparturePoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862561C9C8B58009F1CAB /* DeparturePoint+CoreDataProperties.swift */; };
+		A658625F1C9C8B58009F1CAB /* DeparturePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862571C9C8B58009F1CAB /* DeparturePoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +53,14 @@
 		A65862191C9C73AB009F1CAB /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewController.swift; sourceTree = "<group>"; };
 		A658621E1C9C7CB4009F1CAB /* allStations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allStations.json; sourceTree = "<group>"; };
+		A65862501C9C8B58009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepartureStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A65862511C9C8B58009F1CAB /* DepartureStationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureStationPoint.swift; sourceTree = "<group>"; };
+		A65862521C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepartureCity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A65862531C9C8B58009F1CAB /* DepartureCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureCity.swift; sourceTree = "<group>"; };
+		A65862541C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepartureStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A65862551C9C8B58009F1CAB /* DepartureStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureStation.swift; sourceTree = "<group>"; };
+		A65862561C9C8B58009F1CAB /* DeparturePoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DeparturePoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A65862571C9C8B58009F1CAB /* DeparturePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturePoint.swift; sourceTree = "<group>"; };
 		A89C0163791F8EBC8199CA45 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,6 +163,14 @@
 		A65862181C9C7372009F1CAB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A65862501C9C8B58009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */,
+				A65862511C9C8B58009F1CAB /* DepartureStationPoint.swift */,
+				A65862521C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift */,
+				A65862531C9C8B58009F1CAB /* DepartureCity.swift */,
+				A65862541C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift */,
+				A65862551C9C8B58009F1CAB /* DepartureStation.swift */,
+				A65862561C9C8B58009F1CAB /* DeparturePoint+CoreDataProperties.swift */,
+				A65862571C9C8B58009F1CAB /* DeparturePoint.swift */,
 				A65861F61C9C69D6009F1CAB /* TestWay.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -330,10 +354,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65862591C9C8B58009F1CAB /* DepartureStationPoint.swift in Sources */,
+				A658625F1C9C8B58009F1CAB /* DeparturePoint.swift in Sources */,
+				A658625D1C9C8B58009F1CAB /* DepartureStation.swift in Sources */,
 				A65861F81C9C69D6009F1CAB /* TestWay.xcdatamodeld in Sources */,
 				A658621A1C9C73AB009F1CAB /* DataManager.swift in Sources */,
+				A658625E1C9C8B58009F1CAB /* DeparturePoint+CoreDataProperties.swift in Sources */,
+				A658625B1C9C8B58009F1CAB /* DepartureCity.swift in Sources */,
 				A65861F01C9C69D6009F1CAB /* AppDelegate.swift in Sources */,
 				A658621C1C9C74B7009F1CAB /* RouteTableViewController.swift in Sources */,
+				A658625C1C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift in Sources */,
+				A658625A1C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift in Sources */,
+				A65862581C9C8B58009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

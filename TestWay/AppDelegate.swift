@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - var and let
     var window: UIWindow?
-    let dataStack = DATAStack(modelName: "TestWay")
+//    let dataStack = DATAStack(modelName: "TestWay")
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-    /*
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "Alexsander-Khitev.TestWay" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
@@ -111,6 +110,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    */
 }
 

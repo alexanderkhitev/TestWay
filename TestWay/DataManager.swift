@@ -11,16 +11,17 @@ import Foundation
 import DATAStack
 import Sync
 import MBProgressHUD
+import CoreData
 
 public class DataManager {
     
     // MARK: - var and let
     private let bundle = NSBundle.mainBundle()
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-    private var dataStack: DATAStack! {
-        return appDelegate.dataStack
-    }
-    
+//    private var dataStack: DATAStack! {
+//        return appDelegate.dataStack
+//    }
+//    
     public func saveData(view: UIView?) {
         if let _view = view {
             let progress = MBProgressHUD.showHUDAddedTo(_view, animated: true)
@@ -42,24 +43,25 @@ public class DataManager {
         let json = try! NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments) as! [String : AnyObject]
         
         if let departureCity = json["citiesFrom"] as? [[String: AnyObject]] {
-//            print(departureCity)
-            Sync.changes(departureCity, inEntityNamed: "DepartureCity", dataStack: dataStack) { (error) -> Void in
-                if error != nil {
-                    print(error?.localizedDescription)
-                }
-            }
-        } else {
-            print("there is an error in departureCity")
-        }
-        
-        if let hostCity = json["citiesTo"] as? [[String : AnyObject]] {
-//            Sync.changes(hostCity, inEntityNamed: "HostCity", dataStack: dataStack) { (error) -> Void in
+            let managedObjectContext = appDelegate.managedObjectContext
+            let departureCityEntity = NSEntityDescription.insertNewObjectForEntityForName("DepartureCity", inManagedObjectContext: managedObjectContext) as! DepartureCity
+//            Sync.changes(departureCity, inEntityNamed: "DepartureCity", dataStack: dataStack) { (error) -> Void in
 //                if error != nil {
 //                    print(error?.localizedDescription)
 //                }
 //            }
         } else {
-            print("there is an error in host city")
+            print("there is an error in departureCity")
         }
+        
+//        if let hostCity = json["citiesTo"] as? [[String : AnyObject]] {
+////            Sync.changes(hostCity, inEntityNamed: "HostCity", dataStack: dataStack) { (error) -> Void in
+////                if error != nil {
+////                    print(error?.localizedDescription)
+////                }
+////            }
+//        } else {
+//            print("there is an error in host city")
+//        }
     }
 }
