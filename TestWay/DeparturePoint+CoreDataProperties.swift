@@ -16,7 +16,6 @@ extension DeparturePoint {
 
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
-    @NSManaged var remoteID: String?
     @NSManaged var city: DepartureCity?
 
 }

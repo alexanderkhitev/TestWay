@@ -19,7 +19,6 @@ extension DepartureCity {
     @NSManaged var countryTitle: String?
     @NSManaged var districtTitle: String?
     @NSManaged var regionTitle: String?
-    @NSManaged var remoteID: String?
     @NSManaged var point: NSManagedObject?
     @NSManaged var stations: NSSet?
 

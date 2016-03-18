@@ -48,7 +48,7 @@ public class DataManager {
             let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
             let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
             let departureStationPointEntity = entity("DepartureStationPoint", managedObjectContext: managedObjectContext) as! DepartureStationPoint
-            
+            var checkDigit = 0
             for city in departureCity {
                 guard let countryTitle = city["countryTitle"] as? String else { break }
                 guard let point = city["point"] as? [String : AnyObject] else { break }
@@ -59,6 +59,25 @@ public class DataManager {
                 guard let cityTitle = city["cityTitle"] as? String else { break }
                 guard let regionTitle = city["regionTitle"] as? String else { break }
                 guard let stations = city["stations"] as? [[String : AnyObject]] else { break }
+                // один раз сохраняем город и его точку
+                departureCityEntity.cityId = cityId
+                departureCityEntity.cityTitle = cityTitle
+                departureCityEntity.countryTitle = countryTitle
+                departureCityEntity.districtTitle = districtTitle
+                departureCityEntity.regionTitle = regionTitle
+                // create city point
+                departureCityPointEntity.latitude = latitude
+                departureCityPointEntity.longitude = longitude
+                departureCityEntity.point = departureCityPointEntity
+                
+                do {
+                    checkDigit += 1
+                    try managedObjectContext.save()
+                    print("saved in the core data", checkDigit)
+                } catch {
+                    print("Cannot to save in core data departureCityEntity")
+                }
+                
                 for station in stations {
                     guard let countryTitle = station["countryTitle"] as? String else { break }
                     guard let stationPoint = station["point"] as? [String : AnyObject] else { break }
@@ -70,10 +89,18 @@ public class DataManager {
                     guard let regionTitle = station["regionTitle"] as? String else { break }
                     guard let stationId = station["stationId"] as? NSNumber else { break }
                     guard let stationTitle = station["stationTitle"] as? String else { break }
-                    print("station", countryTitle, stationPoint, districtTitle, cityId, cityTitle, regionTitle, stationId, stationTitle)
-
+//                    // for station
+//                    @NSManaged var cityId: NSNumber?
+//                    @NSManaged var cityTitle: String?
+//                    @NSManaged var countryTitle: String?
+//                    @NSManaged var districtTitle: String?
+//                    @NSManaged var regionTitle: String?
+//                    @NSManaged var stationId: NSNumber?
+//                    @NSManaged var stationTitle: String?
+//                    @NSManaged var city: DepartureCity?
+//                    @NSManaged var point: DepartureStationPoint?
                 }
-                
+//                print("city")
             }
 //            Sync.changes(departureCity, inEntityNamed: "DepartureCity", dataStack: dataStack) { (error) -> Void in
 //                if error != nil {
