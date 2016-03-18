@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Foundation
 
 class RouteTableViewController: UITableViewController {
+    
+    // MARK: - var and let
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +30,6 @@ class RouteTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -92,4 +86,24 @@ class RouteTableViewController: UITableViewController {
     }
     */
 
+    private func tableViewOpensController(index: NSIndexPath) {
+        switch index {
+        case NSIndexPath(forRow: 0, inSection: 0):
+            print("It is the first section")
+        case NSIndexPath(forRow: 0, inSection: 1):
+            print("It is the second section")
+        case NSIndexPath(forRow: 0, inSection: 2):
+            print("It is third section")
+        default: break
+        }
+    }
+}
+
+// MARK: - Table delegate
+
+extension RouteTableViewController {
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableViewOpensController(indexPath)
+    }
 }
