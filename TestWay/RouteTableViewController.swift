@@ -12,17 +12,25 @@ import Foundation
 class RouteTableViewController: UITableViewController {
     
     // MARK: - var and let
+    var dataManager: DataManager!
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dataManager = DataManager()
+        dataManager.saveData(view)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+//        dataManager = DataManager()
+//        dataManager.saveData(view)
     }
 
     override func didReceiveMemoryWarning() {
