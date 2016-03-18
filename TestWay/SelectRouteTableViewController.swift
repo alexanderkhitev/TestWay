@@ -7,13 +7,31 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
-class SelectRouteTableViewController: UITableViewController {
+class SelectRouteTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
+    // MARK: - var and let
+    private var fetchedResultController: NSFetchedResultsController!
+    private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    private var managedObjectContext: NSManagedObjectContext!
+    private var city = [DepartureCity]()
 
     // MARK: - Lifycycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        managedObjectContext = appDelegate.managedObjectContext
         print("SelectRouteTableViewController")
+        fetchedResultController = NSFetchedResultsController(fetchRequest: returnFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error, error.userInfo)
+        }
+        let objects = fetchedResultController.fetchedObjects
+        print(objects?.count, objects)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -92,6 +110,14 @@ class SelectRouteTableViewController: UITableViewController {
     private func setSetting() {
         navigationController?.navigationBarHidden = false
         tabBarController?.tabBar.hidden = true
+    }
+    
+    private func returnFetchResult() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "DepartureCity")
+        let sortDescriptor = NSSortDescriptor(key: "countryTitle", ascending: true)
+        fetchRequest.fetchLimit = 1000
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
     }
 
     /*

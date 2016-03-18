@@ -65,6 +65,7 @@ public class DataManager {
                 departureCityEntity.countryTitle = countryTitle
                 departureCityEntity.districtTitle = districtTitle
                 departureCityEntity.regionTitle = regionTitle
+                departureCityEntity.date = NSDate()
                 // create city point
                 departureCityPointEntity.latitude = latitude
                 departureCityPointEntity.longitude = longitude
@@ -72,10 +73,10 @@ public class DataManager {
                 
                 do {
                     checkDigit += 1
-                    try managedObjectContext.save()
+                    try departureCityEntity.managedObjectContext?.save()
                     print("saved in the core data", checkDigit)
-                } catch {
-                    print("Cannot to save in core data departureCityEntity")
+                } catch let error as NSError {
+                    print("Cannot to save in core data, \(error), \(error.userInfo)")
                 }
                 
                 for station in stations {
