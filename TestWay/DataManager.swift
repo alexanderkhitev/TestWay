@@ -44,7 +44,37 @@ public class DataManager {
         
         if let departureCity = json["citiesFrom"] as? [[String: AnyObject]] {
             let managedObjectContext = appDelegate.managedObjectContext
-            let departureCityEntity = NSEntityDescription.insertNewObjectForEntityForName("DepartureCity", inManagedObjectContext: managedObjectContext) as! DepartureCity
+            let departureCityEntity = entity("DepartureCity", managedObjectContext: managedObjectContext) as! DepartureCity
+            let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
+            let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
+            let departureStationPointEntity = entity("DepartureStationPoint", managedObjectContext: managedObjectContext) as! DepartureStationPoint
+            
+            for city in departureCity {
+                guard let countryTitle = city["countryTitle"] as? String else { break }
+                guard let point = city["point"] as? [String : AnyObject] else { break }
+                guard let longitude = point["longitude"] as? Double else { break } // city point
+                guard let latitude = point["latitude"] as? Double else { break } // city point
+                guard let districtTitle = city["districtTitle"] as? String else { break }
+                guard let cityId = city["cityId"] as? NSNumber else { break }
+                guard let cityTitle = city["cityTitle"] as? String else { break }
+                guard let regionTitle = city["regionTitle"] as? String else { break }
+                guard let stations = city["stations"] as? [[String : AnyObject]] else { break }
+                for station in stations {
+                    guard let countryTitle = station["countryTitle"] as? String else { break }
+                    guard let stationPoint = station["point"] as? [String : AnyObject] else { break }
+                    guard let longitude = stationPoint["longitude"] as? Double else { break }
+                    guard let latitude = stationPoint["latitude"] as? Double else { break }
+                    guard let districtTitle = station["districtTitle"] as? String  else { break }
+                    guard let cityId = station["cityId"] as? NSNumber else { break }
+                    guard let cityTitle = station["cityTitle"] as? String else { break }
+                    guard let regionTitle = station["regionTitle"] as? String else { break }
+                    guard let stationId = station["stationId"] as? NSNumber else { break }
+                    guard let stationTitle = station["stationTitle"] as? String else { break }
+                    print("station", countryTitle, stationPoint, districtTitle, cityId, cityTitle, regionTitle, stationId, stationTitle)
+
+                }
+                
+            }
 //            Sync.changes(departureCity, inEntityNamed: "DepartureCity", dataStack: dataStack) { (error) -> Void in
 //                if error != nil {
 //                    print(error?.localizedDescription)
@@ -63,5 +93,9 @@ public class DataManager {
 //        } else {
 //            print("there is an error in host city")
 //        }
+    }
+    
+    private func entity(name: String, managedObjectContext: NSManagedObjectContext) -> NSManagedObject {
+        return NSEntityDescription.insertNewObjectForEntityForName(name, inManagedObjectContext: managedObjectContext)
     }
 }
