@@ -1,25 +1,19 @@
 //
-//  RouteTableViewController.swift
+//  SelectRouteTableViewController.swift
 //  TestWay
 //
-//  Created by Alexsander  on 3/18/16.
+//  Created by Alexsander  on 3/19/16.
 //  Copyright © 2016 Alexsander Khitev. All rights reserved.
 //
 
 import UIKit
-import Foundation
 
-class RouteTableViewController: UITableViewController {
-    
-    // MARK: - var and let
-    var dataManager: DataManager!
-    
-    // MARK: - Lifecycle
+class SelectRouteTableViewController: UITableViewController {
 
+    // MARK: - Lifycycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataManager = DataManager()
-        dataManager.saveData(view)
+        print("SelectRouteTableViewController")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -37,6 +31,17 @@ class RouteTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Table view data source
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -82,7 +87,14 @@ class RouteTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - functions
+    private func setSetting() {
+        navigationController?.navigationBarHidden = false
+        tabBarController?.tabBar.hidden = true
+    }
 
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -90,34 +102,6 @@ class RouteTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    */
 
-    private func tableViewOpensController(index: NSIndexPath) {
-        let myStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        switch index {
-        case NSIndexPath(forRow: 0, inSection: 0):
-            let controller = myStoryboard.instantiateViewControllerWithIdentifier("SelectRouteTableViewController") as! SelectRouteTableViewController
-            showViewController(controller, sender: self)
-            print("It is the first section")
-        case NSIndexPath(forRow: 0, inSection: 1):
-            print("It is the second section")
-        case NSIndexPath(forRow: 0, inSection: 2):
-            print("It is third section")
-        default: break
-        }
-    }
-    
-    // MARK: - functions
-    private func setSetting() {
-        navigationController?.navigationBarHidden = true
-        tabBarController?.tabBar.hidden = false
-    }
-}
-
-// MARK: - Table delegate
-
-extension RouteTableViewController {
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableViewOpensController(indexPath)
-    }
 }

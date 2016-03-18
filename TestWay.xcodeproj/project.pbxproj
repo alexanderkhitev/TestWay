@@ -25,6 +25,7 @@
 		A658625F1C9C8B58009F1CAB /* DeparturePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862571C9C8B58009F1CAB /* DeparturePoint.swift */; };
 		A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */; };
 		A65862631C9C9451009F1CAB /* DepartureStationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */; };
+		A65862651C9C97C7009F1CAB /* SelectRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862641C9C97C7009F1CAB /* SelectRouteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		A65862571C9C8B58009F1CAB /* DeparturePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturePoint.swift; sourceTree = "<group>"; };
 		A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepartureStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureStationPoint.swift; sourceTree = "<group>"; };
+		A65862641C9C97C7009F1CAB /* SelectRouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRouteTableViewController.swift; sourceTree = "<group>"; };
 		A89C0163791F8EBC8199CA45 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */,
+				A65862641C9C97C7009F1CAB /* SelectRouteTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				A658621C1C9C74B7009F1CAB /* RouteTableViewController.swift in Sources */,
 				A658625C1C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift in Sources */,
 				A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */,
+				A65862651C9C97C7009F1CAB /* SelectRouteTableViewController.swift in Sources */,
 				A658625A1C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
