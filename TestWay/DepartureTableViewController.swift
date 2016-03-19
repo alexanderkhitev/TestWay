@@ -247,4 +247,9 @@ extension DepartureTableViewController: UISearchControllerDelegate, UISearchBarD
         searchResults?.removeAll()
         tableView.reloadData()
     }
+    
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        print("selectedScopeButtonIndexDidChange")
+        updateSearchResultsForSearchController(searchController)
+    }
 }
