@@ -57,14 +57,11 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
             print(error.localizedDescription, error.userInfo)
         }
         cities = cityFetchedResultController.fetchedObjects as! [DepartureCity]
-        //        print(cities.count)
-        var digitOfStations = 0
+        var numberOfcityStations = 0
         for city in cities {
-            print(city.stations?.count)
-            digitOfStations += city.stations!.count
+            numberOfcityStations += (city.stations?.count)!
         }
-        
-        print("Result stations \(digitOfStations)")
+        print("numberOfcityStations", numberOfcityStations)
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,20 +80,24 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return cities[section].cityTitle
+        if let cityTitle = cities[section].cityTitle, let countryTitle = cities[section].countryTitle {
+            return "\(cityTitle) \(countryTitle)"
+        } else {
+            return cities[section].cityTitle ?? ""
+        }
     }
+    
+
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("departureCell", forIndexPath: indexPath) as! DepartureTableViewCell
         
-        
-        
-        
-        // Configure the cell...
-        //        let station = stations[indexPath.row]
-        //        cell.stationTitleLabel.text = station.stationTitle
-        //        cell.countryTitleLabel.text = station.countryTitle
-        //        cell.cityTitleLabel.text = station.cityTitle
+//        let station = stations[indexPath.row]
+//        
+//        // Configure the cell...
+//        cell.stationTitleLabel.text = station.stationTitle
+//        cell.countryTitleLabel.text = station.countryTitle
+//        cell.cityTitleLabel.text = station.cityTitle
         //
         return cell
     }
@@ -144,7 +145,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     
     private func stationFetchResult() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DepartureStation")
-        let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
@@ -171,6 +172,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
 // MARK: - delegate functions
 
 extension DepartureTableViewController {
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let station = stations[indexPath.row]
         print(indexPath, station.stationTitle, station.cityTitle, station.countryTitle)
