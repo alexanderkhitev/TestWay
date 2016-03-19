@@ -9,16 +9,12 @@
 import UIKit
 import CoreData
 import MBProgressHUD
-import Sync
-import DATAStack
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - var and let
     var window: UIWindow?
-//    let dataStack = DATAStack(modelName: "TestWay")
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

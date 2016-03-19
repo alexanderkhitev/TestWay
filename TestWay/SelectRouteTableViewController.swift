@@ -21,17 +21,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     // MARK: - Lifycycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        managedObjectContext = appDelegate.managedObjectContext
-//        print("SelectRouteTableViewController")
-//        fetchedResultController = NSFetchedResultsController(fetchRequest: returnFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-//        fetchedResultController.delegate = self
-//        do {
-//            try fetchedResultController.performFetch()
-//        } catch let error as NSError {
-//            print(error, error.userInfo)
-//        }
-//        let objects = fetchedResultController.fetchedObjects
-//        print(objects?.count, objects)
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
