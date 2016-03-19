@@ -23,7 +23,6 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     private var searchController = UISearchController()
     private var searchResults: [DepartureStation]? = nil
     private var searchPredicate: NSPredicate!
-    private var stations = [DepartureStation]()
     
     // MARK: - Lifycycle
     override func viewDidLoad() {
@@ -48,6 +47,10 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        searchResults?.removeAll()
     }
     
     // MARK: - Table view data source
@@ -90,11 +93,10 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
             cell.countryTitleLabel.text = station.countryTitle
             cell.cityTitleLabel.text = station.cityTitle
         } else {
-            if let station = searchResults?[indexPath.row] {
-                cell.stationTitleLabel.text = station.stationTitle
-                cell.countryTitleLabel.text = station.countryTitle
-                cell.cityTitleLabel.text = station.cityTitle
-            }
+            let station = searchResults![indexPath.row]
+            cell.stationTitleLabel.text = station.stationTitle
+            cell.countryTitleLabel.text = station.countryTitle
+            cell.cityTitleLabel.text = station.cityTitle
         }
         //
         return cell
@@ -156,18 +158,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         }
         print("numberOfcityStations", numberOfcityStations)
         //
-        for city in cities {
-            guard let stationsArray = Array(city.stations!) as? [DepartureStation] else { return }
-            for station in stationsArray {
-                stations.append(station)
-            }
-        }
-        print("stations count \(stations.count)")
-        //
-        
-        
-        //
-        
+
         stationFetchedResultController = NSFetchedResultsController(fetchRequest: stationFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         stationFetchedResultController.delegate = self
         do {
@@ -208,9 +199,14 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
 extension DepartureTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
-        let station = stations[indexPath.row]
-        print(station.stationTitle, station.countryTitle, station.cityTitle)
+        if !searchController.active {
+            guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
+            let station = stations[indexPath.row]
+            print(station.stationTitle, station.countryTitle, station.cityTitle)
+        } else {
+            guard let station = searchResults?[indexPath.row] else { return }
+            print(station.stationTitle, station.countryTitle, station.cityTitle)
+        }
     }
 }
 
@@ -230,6 +226,7 @@ extension DepartureTableViewController: UISearchControllerDelegate, UISearchBarD
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+        searchResults?.removeAll()
         guard let searchText = searchController.searchBar.text else { return }
         searchPredicate = NSPredicate(format: "stationTitle contains [c] %@", searchText)
         searchResults = stationFetchedResultController.fetchedObjects?.filter() {
@@ -247,6 +244,7 @@ extension DepartureTableViewController: UISearchControllerDelegate, UISearchBarD
     }
     
     func didDismissSearchController(searchController: UISearchController) {
+        searchResults?.removeAll()
         tableView.reloadData()
     }
 }
