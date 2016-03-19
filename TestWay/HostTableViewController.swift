@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class SelectHostTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class HostTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - var and let
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -134,7 +134,7 @@ class SelectHostTableViewController: UITableViewController, NSFetchedResultsCont
 
 // MARK: - delegate
 
-extension SelectHostTableViewController {
+extension HostTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let station = stations[indexPath.row]

@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class SelectDepartureTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class DepartureTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - var and let
     private var fetchedResultController: NSFetchedResultsController!
@@ -63,13 +63,15 @@ class SelectDepartureTableViewController: UITableViewController, NSFetchedResult
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("departureCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("departureCell", forIndexPath: indexPath) as! DepartureTableViewCell
 
         // Configure the cell...
-        let city = stations[indexPath.row]
+        let station = stations[indexPath.row]
         
-        cell.textLabel?.text = city.stationTitle
-
+        cell.stationTitleLabel.text = station.stationTitle
+        cell.countryTitleLabel.text = station.countryTitle
+        cell.cityTitleLabel.text = station.cityTitle
+        
         return cell
     }
 
@@ -135,7 +137,7 @@ class SelectDepartureTableViewController: UITableViewController, NSFetchedResult
 
 // MARK: - delegate functions
 
-extension SelectDepartureTableViewController {
+extension DepartureTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let station = stations[indexPath.row]
         print(station.stationTitle, station.cityTitle, station.countryTitle)

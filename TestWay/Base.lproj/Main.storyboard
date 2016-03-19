@@ -107,31 +107,58 @@
             </objects>
             <point key="canvasLocation" x="1727" y="-156"/>
         </scene>
-        <!--Select Departure Table View Controller-->
+        <!--Departure Table View Controller-->
         <scene sceneID="tJD-h5-oHj">
             <objects>
-                <tableViewController id="LO3-Ui-Ywy" customClass="SelectDepartureTableViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yi6-en-hRY">
+                <tableViewController storyboardIdentifier="DepartureTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LO3-Ui-Ywy" customClass="DepartureTableViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="yi6-en-hRY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="departureCell" textLabel="g8A-x8-uSq" style="IBUITableViewCellStyleDefault" id="fpO-Ox-lZ9">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="departureCell" id="fpO-Ox-lZ9" customClass="DepartureTableViewCell" customModule="TestWay" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fpO-Ox-lZ9" id="zJt-re-FGq">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g8A-x8-uSq">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RY-2J-DlH">
+                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2d-cL-IcD">
+                                            <rect key="frame" x="8" y="29" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J93-DO-P8m">
+                                            <rect key="frame" x="8" y="50" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="f2d-cL-IcD" firstAttribute="leading" secondItem="zJt-re-FGq" secondAttribute="leadingMargin" id="Itx-re-qCy"/>
+                                        <constraint firstItem="J93-DO-P8m" firstAttribute="bottom" secondItem="zJt-re-FGq" secondAttribute="bottomMargin" id="c7a-dt-gwg"/>
+                                        <constraint firstItem="f2d-cL-IcD" firstAttribute="centerY" secondItem="zJt-re-FGq" secondAttribute="centerY" id="eBk-R0-Eyc"/>
+                                        <constraint firstItem="2RY-2J-DlH" firstAttribute="leading" secondItem="f2d-cL-IcD" secondAttribute="leading" id="gxe-Zi-WWo"/>
+                                        <constraint firstItem="2RY-2J-DlH" firstAttribute="trailing" secondItem="f2d-cL-IcD" secondAttribute="trailing" id="p2d-Aa-yfg"/>
+                                        <constraint firstItem="J93-DO-P8m" firstAttribute="trailing" secondItem="f2d-cL-IcD" secondAttribute="trailing" id="tb9-H8-Z8M"/>
+                                        <constraint firstItem="J93-DO-P8m" firstAttribute="leading" secondItem="f2d-cL-IcD" secondAttribute="leading" id="w0Y-nq-hXs"/>
+                                        <constraint firstItem="2RY-2J-DlH" firstAttribute="top" secondItem="zJt-re-FGq" secondAttribute="topMargin" id="yGm-N0-JIZ"/>
+                                        <constraint firstItem="f2d-cL-IcD" firstAttribute="trailing" secondItem="zJt-re-FGq" secondAttribute="trailingMargin" id="zfp-dl-BA3"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityTitleLabel" destination="f2d-cL-IcD" id="CMB-1v-9EO"/>
+                                    <outlet property="countryTitleLabel" destination="J93-DO-P8m" id="5Oa-Nd-jR5"/>
+                                    <outlet property="stationTitleLabel" destination="2RY-2J-DlH" id="Yj9-Wd-bpC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -144,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="2448" y="-388"/>
         </scene>
-        <!--Select Host Table View Controller-->
+        <!--Host Table View Controller-->
         <scene sceneID="vwy-Us-Tuo">
             <objects>
-                <tableViewController id="CnD-kn-PSH" customClass="SelectHostTableViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HostTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CnD-kn-PSH" customClass="HostTableViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0G0-Jr-4nt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
