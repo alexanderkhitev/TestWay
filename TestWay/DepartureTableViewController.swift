@@ -18,13 +18,13 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     private var managedObjectContext: NSManagedObjectContext! {
         return appDelegate.managedObjectContext
     }
-//    private var stations = [DepartureStation]()
     private var cities = [DepartureCity]()
+    private var searchController: UISearchController!
     
     // MARK: - Lifycycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -36,6 +36,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         super.viewWillAppear(true)
         self.definesPresentationContext = true
         setSetting()
+        setSearchController()
         print("DepartureTableViewController")
         fetchedResultController = NSFetchedResultsController(fetchRequest: cityFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
@@ -77,14 +78,18 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("departureCell", forIndexPath: indexPath) as! DepartureTableViewCell
-        let stations = Array(cities[indexPath.section].stations!) as! [DepartureStation]
-        let station = stations[indexPath.row]
-        // Configure the cell...
-        cell.stationTitleLabel.text = station.stationTitle
-        cell.countryTitleLabel.text = station.countryTitle
-        cell.cityTitleLabel.text = station.cityTitle
-        //
-        return cell
+        if !searchController.active {
+            let stations = Array(cities[indexPath.section].stations!) as! [DepartureStation]
+            let station = stations[indexPath.row]
+            // Configure the cell...
+            cell.stationTitleLabel.text = station.stationTitle
+            cell.countryTitleLabel.text = station.countryTitle
+            cell.cityTitleLabel.text = station.cityTitle
+            //
+            return cell
+        } else {
+            return cell
+        }
     }
     
     /*
@@ -155,5 +160,27 @@ extension DepartureTableViewController {
         guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
         let station = stations[indexPath.row]
         print(station.stationTitle, station.countryTitle, station.cityTitle)
+    }
+}
+
+// MARK: - searchController and searchBar and their functions
+
+extension DepartureTableViewController: UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating  {
+    
+    private func setSearchController() {
+        print("setSearchController")
+        searchController = UISearchController(searchResultsController: self)
+        searchController.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.delegate = self
+        searchController.searchBar.searchBarStyle = .Prominent
+        tableView.tableHeaderView = searchController.searchBar
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
     }
 }

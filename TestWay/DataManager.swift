@@ -119,7 +119,6 @@ public class DataManager {
             print("there is an error in departureCity")
         }
         
-        
         if let hostCities = json["citiesTo"] as? [[String : AnyObject]] {
             var checkDigit = 0
             var checkStationDigit = 0
