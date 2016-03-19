@@ -44,12 +44,15 @@ public class DataManager {
         
         if let departureCity = json["citiesFrom"] as? [[String: AnyObject]] {
             let managedObjectContext = appDelegate.managedObjectContext
-            let departureCityEntity = entity("DepartureCity", managedObjectContext: managedObjectContext) as! DepartureCity
-            let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
+//            let departureCityEntity = entity("DepartureCity", managedObjectContext: managedObjectContext) as! DepartureCity
+//            let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
             let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
             let departureStationPointEntity = entity("DepartureStationPoint", managedObjectContext: managedObjectContext) as! DepartureStationPoint
             var checkDigit = 0
             for city in departureCity {
+                let departureCityEntity = entity("DepartureCity", managedObjectContext: managedObjectContext) as! DepartureCity
+                let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
+                
                 guard let countryTitle = city["countryTitle"] as? String else { break }
                 guard let point = city["point"] as? [String : AnyObject] else { break }
                 guard let longitude = point["longitude"] as? Double else { break } // city point

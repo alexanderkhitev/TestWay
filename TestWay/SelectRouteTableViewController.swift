@@ -16,22 +16,22 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     private var fetchedResultController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext!
-    private var city = [DepartureCity]()
+    private var cities = [DepartureCity]()
 
     // MARK: - Lifycycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        managedObjectContext = appDelegate.managedObjectContext
-        print("SelectRouteTableViewController")
-        fetchedResultController = NSFetchedResultsController(fetchRequest: returnFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultController.delegate = self
-        do {
-            try fetchedResultController.performFetch()
-        } catch let error as NSError {
-            print(error, error.userInfo)
-        }
-        let objects = fetchedResultController.fetchedObjects
-        print(objects?.count, objects)
+//        managedObjectContext = appDelegate.managedObjectContext
+//        print("SelectRouteTableViewController")
+//        fetchedResultController = NSFetchedResultsController(fetchRequest: returnFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+//        fetchedResultController.delegate = self
+//        do {
+//            try fetchedResultController.performFetch()
+//        } catch let error as NSError {
+//            print(error, error.userInfo)
+//        }
+//        let objects = fetchedResultController.fetchedObjects
+//        print(objects?.count, objects)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -42,6 +42,18 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         setSetting()
+        managedObjectContext = appDelegate.managedObjectContext
+        print("SelectRouteTableViewController")
+        fetchedResultController = NSFetchedResultsController(fetchRequest: returnFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error, error.userInfo)
+        }
+        cities = fetchedResultController.fetchedObjects as! [DepartureCity]
+        print("Number of cities \(cities.count)")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,24 +64,23 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1 ?? 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return cities.count ?? 0
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
+        let city = cities[indexPath.row]
+        
+        cell.textLabel?.text = city.cityTitle
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -114,7 +125,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     
     private func returnFetchResult() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DepartureCity")
-        let sortDescriptor = NSSortDescriptor(key: "countryTitle", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
         fetchRequest.fetchLimit = 1000
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
