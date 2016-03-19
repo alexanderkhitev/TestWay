@@ -19,7 +19,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         return appDelegate.managedObjectContext
     }
     private var cities = [DepartureCity]()
-    private var searchController: UISearchController!
+    private var searchController = UISearchController()
     
     // MARK: - Lifycycle
     override func viewDidLoad() {
