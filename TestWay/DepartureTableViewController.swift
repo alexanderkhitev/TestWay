@@ -91,13 +91,12 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("departureCell", forIndexPath: indexPath) as! DepartureTableViewCell
-        
-//        let station = stations[indexPath.row]
-//        
-//        // Configure the cell...
-//        cell.stationTitleLabel.text = station.stationTitle
-//        cell.countryTitleLabel.text = station.countryTitle
-//        cell.cityTitleLabel.text = station.cityTitle
+        let stations = Array(cities[indexPath.section].stations!) as! [DepartureStation]
+        let station = stations[indexPath.row]
+        // Configure the cell...
+        cell.stationTitleLabel.text = station.stationTitle
+        cell.countryTitleLabel.text = station.countryTitle
+        cell.cityTitleLabel.text = station.cityTitle
         //
         return cell
     }
@@ -174,7 +173,6 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
 extension DepartureTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let station = stations[indexPath.row]
-        print(indexPath, station.stationTitle, station.cityTitle, station.countryTitle)
+     
     }
 }
