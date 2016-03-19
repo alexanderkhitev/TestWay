@@ -14,12 +14,16 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     
     // MARK: - var and let
     private var fetchedResultController: NSFetchedResultsController!
+    private var stationFetchedResultController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext! {
         return appDelegate.managedObjectContext
     }
     private var cities = [DepartureCity]()
     private var searchController = UISearchController()
+    private var searchResults: [DepartureStation]? = nil
+    private var searchPredicate: NSPredicate!
+    private var stations = [DepartureStation]()
     
     // MARK: - Lifycycle
     override func viewDidLoad() {
@@ -37,20 +41,8 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         self.definesPresentationContext = true
         setSetting()
         setSearchController()
+        setFetchedResultController()
         print("DepartureTableViewController")
-        fetchedResultController = NSFetchedResultsController(fetchRequest: cityFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultController.delegate = self
-        do {
-            try fetchedResultController.performFetch()
-        } catch let error as NSError {
-            print(error.localizedDescription, error.userInfo)
-        }
-        cities = fetchedResultController.fetchedObjects as! [DepartureCity]
-        var numberOfcityStations = 0
-        for city in cities {
-            numberOfcityStations += (city.stations?.count)!
-        }
-        print("numberOfcityStations", numberOfcityStations)
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,7 +56,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         if !searchController.active {
             return cities.count ?? 0
         } else {
-            return 1 ?? 0
+            return searchResults?.count ?? 0
         }
     }
     
@@ -98,9 +90,11 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
             cell.countryTitleLabel.text = station.countryTitle
             cell.cityTitleLabel.text = station.cityTitle
         } else {
-            cell.stationTitleLabel.text = ""
-            cell.countryTitleLabel.text = ""
-            cell.cityTitleLabel.text = ""
+            if let station = searchResults?[indexPath.row] {
+                cell.stationTitleLabel.text = station.stationTitle
+                cell.countryTitleLabel.text = station.countryTitle
+                cell.cityTitleLabel.text = station.cityTitle
+            }
         }
         //
         return cell
@@ -147,9 +141,52 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         tabBarController?.tabBar.hidden = true
     }
     
+    private func setFetchedResultController() {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: cityFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+        cities = fetchedResultController.fetchedObjects as! [DepartureCity]
+        var numberOfcityStations = 0
+        for city in cities {
+            numberOfcityStations += (city.stations?.count)!
+        }
+        print("numberOfcityStations", numberOfcityStations)
+        //
+        for city in cities {
+            guard let stationsArray = Array(city.stations!) as? [DepartureStation] else { return }
+            for station in stationsArray {
+                stations.append(station)
+            }
+        }
+        print("stations count \(stations.count)")
+        //
+        
+        
+        //
+        
+        stationFetchedResultController = NSFetchedResultsController(fetchRequest: stationFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        stationFetchedResultController.delegate = self
+        do {
+            try stationFetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+    }
+    
     private func cityFetchResult() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DepartureCity")
         let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
+    private func stationFetchResult() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "DepartureStation")
+        let sortDescriptor = NSSortDescriptor(key: "stationTitle", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
@@ -193,11 +230,19 @@ extension DepartureTableViewController: UISearchControllerDelegate, UISearchBarD
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        
+        guard let searchText = searchController.searchBar.text else { return }
+        searchPredicate = NSPredicate(format: "stationTitle contains [c] %@", searchText)
+        searchResults = stationFetchedResultController.fetchedObjects?.filter() {
+            return searchPredicate.evaluateWithObject($0)
+        } as? [DepartureStation]
+        print(searchResults?.count)
+        tableView.reloadData()
+        for st in searchResults! {
+            print(st.stationTitle, st.cityTitle)
+        }
     }
     
     func didPresentSearchController(searchController: UISearchController) {
-        print("willPresentSearchController")
         tableView.reloadData()
     }
     
