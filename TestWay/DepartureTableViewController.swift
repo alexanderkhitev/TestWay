@@ -14,12 +14,11 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     
     // MARK: - var and let
     private var fetchedResultController: NSFetchedResultsController!
-    private var cityFetchedResultController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext! {
         return appDelegate.managedObjectContext
     }
-    private var stations = [DepartureStation]()
+//    private var stations = [DepartureStation]()
     private var cities = [DepartureCity]()
     
     // MARK: - Lifycycle
@@ -37,26 +36,15 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         super.viewWillAppear(true)
         self.definesPresentationContext = true
         setSetting()
-        print("SelectRouteTableViewController")
-        fetchedResultController = NSFetchedResultsController(fetchRequest: stationFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        print("DepartureTableViewController")
+        fetchedResultController = NSFetchedResultsController(fetchRequest: cityFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         do {
             try fetchedResultController.performFetch()
         } catch let error as NSError {
-            print(error, error.userInfo)
-        }
-        stations = fetchedResultController.fetchedObjects as! [DepartureStation]
-        print("Number of stations \(stations.count)")
-        
-        
-        cityFetchedResultController = NSFetchedResultsController(fetchRequest: cityFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        cityFetchedResultController.delegate = self
-        do {
-            try cityFetchedResultController.performFetch()
-        } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
-        cities = cityFetchedResultController.fetchedObjects as! [DepartureCity]
+        cities = fetchedResultController.fetchedObjects as! [DepartureCity]
         var numberOfcityStations = 0
         for city in cities {
             numberOfcityStations += (city.stations?.count)!
@@ -86,8 +74,6 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
             return cities[section].cityTitle ?? ""
         }
     }
-    
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("departureCell", forIndexPath: indexPath) as! DepartureTableViewCell
@@ -142,13 +128,6 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         tabBarController?.tabBar.hidden = true
     }
     
-    private func stationFetchResult() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "DepartureStation")
-        let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        return fetchRequest
-    }
-    
     private func cityFetchResult() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DepartureCity")
         let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
@@ -173,6 +152,8 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
 extension DepartureTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-     
+        guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
+        let station = stations[indexPath.row]
+        print(station.stationTitle, station.countryTitle, station.cityTitle)
     }
 }
