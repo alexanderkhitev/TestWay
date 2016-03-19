@@ -22,7 +22,7 @@ public class DataManager {
             let progress = MBProgressHUD.showHUDAddedTo(_view, animated: true)
             progress.mode = .Indeterminate
             progress.removeFromSuperViewOnHide = true
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch")
                 if firstLaunch == false {
                     self.save()

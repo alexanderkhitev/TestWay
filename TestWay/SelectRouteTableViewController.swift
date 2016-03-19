@@ -116,7 +116,6 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     private func returnFetchResult() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DepartureStation")
         let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
-        fetchRequest.fetchLimit = 1000
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
