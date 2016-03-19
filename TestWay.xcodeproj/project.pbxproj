@@ -25,7 +25,8 @@
 		A658625F1C9C8B58009F1CAB /* DeparturePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862571C9C8B58009F1CAB /* DeparturePoint.swift */; };
 		A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */; };
 		A65862631C9C9451009F1CAB /* DepartureStationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */; };
-		A65862651C9C97C7009F1CAB /* SelectRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862641C9C97C7009F1CAB /* SelectRouteTableViewController.swift */; };
+		A65862651C9C97C7009F1CAB /* SelectDepartureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862641C9C97C7009F1CAB /* SelectDepartureTableViewController.swift */; };
+		A6900B881C9D7FA20014D380 /* SelectHostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B871C9D7FA20014D380 /* SelectHostTableViewController.swift */; };
 		A6F815841C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */; };
 		A6F815851C9D6F77002D84F7 /* HostPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */; };
 		A6F815861C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */; };
@@ -70,7 +71,8 @@
 		A65862571C9C8B58009F1CAB /* DeparturePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturePoint.swift; sourceTree = "<group>"; };
 		A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepartureStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureStationPoint.swift; sourceTree = "<group>"; };
-		A65862641C9C97C7009F1CAB /* SelectRouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRouteTableViewController.swift; sourceTree = "<group>"; };
+		A65862641C9C97C7009F1CAB /* SelectDepartureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDepartureTableViewController.swift; sourceTree = "<group>"; };
+		A6900B871C9D7FA20014D380 /* SelectHostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectHostTableViewController.swift; sourceTree = "<group>"; };
 		A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostPoint.swift; sourceTree = "<group>"; };
 		A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -149,7 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */,
-				A65862641C9C97C7009F1CAB /* SelectRouteTableViewController.swift */,
+				A65862641C9C97C7009F1CAB /* SelectDepartureTableViewController.swift */,
+				A6900B871C9D7FA20014D380 /* SelectHostTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -414,10 +417,11 @@
 				A658625C1C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift in Sources */,
 				A6F8158B1C9D6F77002D84F7 /* HostCity.swift in Sources */,
 				A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */,
-				A65862651C9C97C7009F1CAB /* SelectRouteTableViewController.swift in Sources */,
+				A65862651C9C97C7009F1CAB /* SelectDepartureTableViewController.swift in Sources */,
 				A6F815871C9D6F77002D84F7 /* HostStationPoint.swift in Sources */,
 				A6F8158A1C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift in Sources */,
 				A658625A1C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift in Sources */,
+				A6900B881C9D7FA20014D380 /* SelectHostTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

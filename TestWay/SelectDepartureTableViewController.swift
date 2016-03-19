@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class SelectRouteTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class SelectDepartureTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - var and let
     private var fetchedResultController: NSFetchedResultsController!
@@ -31,6 +31,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
         setSetting()
         managedObjectContext = appDelegate.managedObjectContext
         print("SelectRouteTableViewController")
@@ -62,7 +63,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("departureCell", forIndexPath: indexPath)
 
         // Configure the cell...
         let city = stations[indexPath.row]
@@ -134,7 +135,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
 
 // MARK: - delegate functions
 
-extension SelectRouteTableViewController {
+extension SelectDepartureTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let station = stations[indexPath.row]
         print(station.stationTitle, station.cityTitle, station.countryTitle)
