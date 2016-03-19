@@ -46,13 +46,13 @@ public class DataManager {
             let managedObjectContext = appDelegate.managedObjectContext
 //            let departureCityEntity = entity("DepartureCity", managedObjectContext: managedObjectContext) as! DepartureCity
 //            let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
-            let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
-            let departureStationPointEntity = entity("DepartureStationPoint", managedObjectContext: managedObjectContext) as! DepartureStationPoint
+//            let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
+//            let departureStationPointEntity = entity("DepartureStationPoint", managedObjectContext: managedObjectContext) as! DepartureStationPoint
             var checkDigit = 0
+            var checkStationDigit = 0
             for city in departureCity {
                 let departureCityEntity = entity("DepartureCity", managedObjectContext: managedObjectContext) as! DepartureCity
                 let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
-                
                 guard let countryTitle = city["countryTitle"] as? String else { break }
                 guard let point = city["point"] as? [String : AnyObject] else { break }
                 guard let longitude = point["longitude"] as? Double else { break } // city point
@@ -74,37 +74,68 @@ public class DataManager {
                 departureCityPointEntity.longitude = longitude
                 departureCityEntity.point = departureCityPointEntity
                 
-                do {
-                    checkDigit += 1
-                    try departureCityEntity.managedObjectContext?.save()
-                    print("saved in the core data", checkDigit)
-                } catch let error as NSError {
-                    print("Cannot to save in core data, \(error), \(error.userInfo)")
-                }
-                
-//                for station in stations {
-//                    guard let countryTitle = station["countryTitle"] as? String else { break }
-//                    guard let stationPoint = station["point"] as? [String : AnyObject] else { break }
-//                    guard let longitude = stationPoint["longitude"] as? Double else { break }
-//                    guard let latitude = stationPoint["latitude"] as? Double else { break }
-//                    guard let districtTitle = station["districtTitle"] as? String  else { break }
-//                    guard let cityId = station["cityId"] as? NSNumber else { break }
-//                    guard let cityTitle = station["cityTitle"] as? String else { break }
-//                    guard let regionTitle = station["regionTitle"] as? String else { break }
-//                    guard let stationId = station["stationId"] as? NSNumber else { break }
-//                    guard let stationTitle = station["stationTitle"] as? String else { break }
-////                    // for station
-////                    @NSManaged var cityId: NSNumber?
-////                    @NSManaged var cityTitle: String?
-////                    @NSManaged var countryTitle: String?
-////                    @NSManaged var districtTitle: String?
-////                    @NSManaged var regionTitle: String?
-////                    @NSManaged var stationId: NSNumber?
-////                    @NSManaged var stationTitle: String?
-////                    @NSManaged var city: DepartureCity?
-////                    @NSManaged var point: DepartureStationPoint?
+                // check 
+                checkDigit += 1
+                print("city", checkDigit)
+//                do {
+//                    checkDigit += 1
+//                    try departureCityEntity.managedObjectContext?.save()
+//                    print("saved in the core data", checkDigit)
+//                } catch let error as NSError {
+//                    print("Cannot to save in core data, \(error), \(error.userInfo)")
 //                }
-//                print("city")
+                
+                for station in stations {
+                    let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
+                    let departureStationPointEntity = entity("DepartureStationPoint", managedObjectContext: managedObjectContext) as! DepartureStationPoint
+                
+                    
+                    guard let countryStationTitle = station["countryTitle"] as? String else { break }
+                    guard let stationStationPoint = station["point"] as? [String : AnyObject] else { break }
+                    guard let stationLongitude = stationStationPoint["longitude"] as? Double else { break }
+                    guard let stationLatitude = stationStationPoint["latitude"] as? Double else { break }
+                    guard let districtStationTitle = station["districtTitle"] as? String  else { break }
+                    guard let cityStationId = station["cityId"] as? NSNumber else { break }
+                    guard let cityStationTitle = station["cityTitle"] as? String else { break }
+                    guard let regionStationTitle = station["regionTitle"] as? String else { break }
+                    guard let stationId = station["stationId"] as? NSNumber else { break }
+                    guard let stationTitle = station["stationTitle"] as? String else { break }
+                    
+                    departureStationEntity.cityId = cityStationId
+                    departureStationEntity.cityTitle = cityStationTitle
+                    departureStationEntity.countryTitle = countryStationTitle
+                    departureStationEntity.districtTitle = districtStationTitle
+                    departureStationEntity.regionTitle = regionStationTitle
+                    departureStationEntity.stationId = stationId
+                    departureStationEntity.stationTitle = stationTitle
+                    
+                    // need to add point and city 
+                    // add point
+                    departureStationPointEntity.latitude = stationLatitude
+                    departureStationPointEntity.longitude = stationLongitude
+                    departureStationEntity.point = departureStationPointEntity
+                    // add city
+                    departureStationEntity.city = departureCityEntity
+                    
+                    do {
+                        try managedObjectContext.save()
+                    } catch let error as NSError {
+                        print("error when save", error.localizedDescription, error.userInfo)
+                    }
+                    
+                    checkStationDigit += 1
+                    // for station
+//                    @NSManaged var cityId: NSNumber? /////
+//                    @NSManaged var cityTitle: String? /////
+//                    @NSManaged var countryTitle: String? /////
+//                    @NSManaged var districtTitle: String? /////
+//                    @NSManaged var regionTitle: String? /////
+//                    @NSManaged var stationId: NSNumber? /////
+//                    @NSManaged var stationTitle: String? /////
+//                    @NSManaged var city: DepartureCity?
+//                    @NSManaged var point: DepartureStationPoint?
+                }
+                print("checkStationDigit \(checkStationDigit)")
             }
 //            Sync.changes(departureCity, inEntityNamed: "DepartureCity", dataStack: dataStack) { (error) -> Void in
 //                if error != nil {

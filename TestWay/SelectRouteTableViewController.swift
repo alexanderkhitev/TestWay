@@ -142,3 +142,12 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     */
 
 }
+
+// MARK: - delegate functions
+
+extension SelectRouteTableViewController {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let city = cities[indexPath.row]
+        print(city.cityTitle, city.stations?.count, "stations")
+    }
+}
