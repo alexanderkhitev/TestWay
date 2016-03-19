@@ -23,7 +23,11 @@ public class DataManager {
             progress.mode = .Indeterminate
             progress.removeFromSuperViewOnHide = true
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-                self.save()
+                let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch")
+                if firstLaunch == false {
+                    self.save()
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
+                }
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     progress.hide(true)
                 })
@@ -79,11 +83,9 @@ public class DataManager {
 //                } catch let error as NSError {
 //                    print("Cannot to save in core data, \(error), \(error.userInfo)")
 //                }
-                
                 for station in stations {
                     let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
                     let departureStationPointEntity = entity("DepartureStationPoint", managedObjectContext: managedObjectContext) as! DepartureStationPoint
-                
                     
                     guard let countryStationTitle = station["countryTitle"] as? String else { break }
                     guard let stationStationPoint = station["point"] as? [String : AnyObject] else { break }
@@ -119,34 +121,15 @@ public class DataManager {
                     }
                     
                     checkStationDigit += 1
-                    // for station
-//                    @NSManaged var cityId: NSNumber? /////
-//                    @NSManaged var cityTitle: String? /////
-//                    @NSManaged var countryTitle: String? /////
-//                    @NSManaged var districtTitle: String? /////
-//                    @NSManaged var regionTitle: String? /////
-//                    @NSManaged var stationId: NSNumber? /////
-//                    @NSManaged var stationTitle: String? /////
-//                    @NSManaged var city: DepartureCity?
-//                    @NSManaged var point: DepartureStationPoint?
                 }
                 print("checkStationDigit \(checkStationDigit)")
             }
-//            Sync.changes(departureCity, inEntityNamed: "DepartureCity", dataStack: dataStack) { (error) -> Void in
-//                if error != nil {
-//                    print(error?.localizedDescription)
-//                }
-//            }
         } else {
             print("there is an error in departureCity")
         }
         
 //        if let hostCity = json["citiesTo"] as? [[String : AnyObject]] {
-////            Sync.changes(hostCity, inEntityNamed: "HostCity", dataStack: dataStack) { (error) -> Void in
-////                if error != nil {
-////                    print(error?.localizedDescription)
-////                }
-////            }
+
 //        } else {
 //            print("there is an error in host city")
 //        }
