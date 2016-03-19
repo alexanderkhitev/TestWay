@@ -78,17 +78,14 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("departureCell", forIndexPath: indexPath) as! DepartureTableViewCell
-        if !searchController.active {
-            let stations = Array(cities[indexPath.section].stations!) as! [DepartureStation]
-            let station = stations[indexPath.row]
-            // Configure the cell...
-            cell.stationTitleLabel.text = station.stationTitle
-            cell.countryTitleLabel.text = station.countryTitle
-            cell.cityTitleLabel.text = station.cityTitle
-            //
-            return cell
-        } else {
-            return cell
+        let stations = Array(cities[indexPath.section].stations!) as! [DepartureStation]
+        let station = stations[indexPath.row]
+        // Configure the cell...
+        cell.stationTitleLabel.text = station.stationTitle
+        cell.countryTitleLabel.text = station.countryTitle
+        cell.cityTitleLabel.text = station.cityTitle
+        //
+        return cell
         }
     }
     
