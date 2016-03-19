@@ -16,7 +16,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     private var fetchedResultController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext!
-    private var cities = [DepartureCity]()
+    private var stations = [DepartureStation]()
 
     // MARK: - Lifycycle
     override func viewDidLoad() {
@@ -51,8 +51,8 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
         } catch let error as NSError {
             print(error, error.userInfo)
         }
-        cities = fetchedResultController.fetchedObjects as! [DepartureCity]
-        print("Number of cities \(cities.count)")
+        stations = fetchedResultController.fetchedObjects as! [DepartureStation]
+        print("Number of stations \(stations.count)")
         
     }
 
@@ -68,16 +68,16 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count ?? 0
+        return stations.count ?? 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
-        let city = cities[indexPath.row]
+        let city = stations[indexPath.row]
         
-        cell.textLabel?.text = city.cityTitle
+        cell.textLabel?.text = city.stationTitle
 
         return cell
     }
@@ -124,7 +124,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     }
     
     private func returnFetchResult() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "DepartureCity")
+        let fetchRequest = NSFetchRequest(entityName: "DepartureStation")
         let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
         fetchRequest.fetchLimit = 1000
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -147,7 +147,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
 
 extension SelectRouteTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let city = cities[indexPath.row]
-        print(city.cityTitle, city.stations?.count, "stations")
+        let station = stations[indexPath.row]
+        print(station.stationTitle, station.cityTitle, "stations")
     }
 }
