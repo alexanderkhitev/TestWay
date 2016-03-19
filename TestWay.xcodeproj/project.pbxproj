@@ -26,6 +26,14 @@
 		A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */; };
 		A65862631C9C9451009F1CAB /* DepartureStationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */; };
 		A65862651C9C97C7009F1CAB /* SelectRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862641C9C97C7009F1CAB /* SelectRouteTableViewController.swift */; };
+		A6F815841C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */; };
+		A6F815851C9D6F77002D84F7 /* HostPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */; };
+		A6F815861C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */; };
+		A6F815871C9D6F77002D84F7 /* HostStationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157F1C9D6F77002D84F7 /* HostStationPoint.swift */; };
+		A6F815881C9D6F77002D84F7 /* HostStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F815801C9D6F77002D84F7 /* HostStation+CoreDataProperties.swift */; };
+		A6F815891C9D6F77002D84F7 /* HostStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F815811C9D6F77002D84F7 /* HostStation.swift */; };
+		A6F8158A1C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F815821C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift */; };
+		A6F8158B1C9D6F77002D84F7 /* HostCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F815831C9D6F77002D84F7 /* HostCity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +71,14 @@
 		A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepartureStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureStationPoint.swift; sourceTree = "<group>"; };
 		A65862641C9C97C7009F1CAB /* SelectRouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRouteTableViewController.swift; sourceTree = "<group>"; };
+		A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostPoint.swift; sourceTree = "<group>"; };
+		A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A6F8157F1C9D6F77002D84F7 /* HostStationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostStationPoint.swift; sourceTree = "<group>"; };
+		A6F815801C9D6F77002D84F7 /* HostStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A6F815811C9D6F77002D84F7 /* HostStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostStation.swift; sourceTree = "<group>"; };
+		A6F815821C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostCity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A6F815831C9D6F77002D84F7 /* HostCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostCity.swift; sourceTree = "<group>"; };
 		A89C0163791F8EBC8199CA45 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -166,14 +182,8 @@
 		A65862181C9C7372009F1CAB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */,
-				A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */,
-				A65862521C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift */,
-				A65862531C9C8B58009F1CAB /* DepartureCity.swift */,
-				A65862541C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift */,
-				A65862551C9C8B58009F1CAB /* DepartureStation.swift */,
-				A65862561C9C8B58009F1CAB /* DeparturePoint+CoreDataProperties.swift */,
-				A65862571C9C8B58009F1CAB /* DeparturePoint.swift */,
+				A6F8157A1C9D6F1F002D84F7 /* DepartureData */,
+				A6F8157B1C9D6F33002D84F7 /* HostData */,
 				A65861F61C9C69D6009F1CAB /* TestWay.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -185,6 +195,36 @@
 				A658621E1C9C7CB4009F1CAB /* allStations.json */,
 			);
 			name = Files;
+			sourceTree = "<group>";
+		};
+		A6F8157A1C9D6F1F002D84F7 /* DepartureData */ = {
+			isa = PBXGroup;
+			children = (
+				A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */,
+				A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */,
+				A65862521C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift */,
+				A65862531C9C8B58009F1CAB /* DepartureCity.swift */,
+				A65862541C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift */,
+				A65862551C9C8B58009F1CAB /* DepartureStation.swift */,
+				A65862561C9C8B58009F1CAB /* DeparturePoint+CoreDataProperties.swift */,
+				A65862571C9C8B58009F1CAB /* DeparturePoint.swift */,
+			);
+			name = DepartureData;
+			sourceTree = "<group>";
+		};
+		A6F8157B1C9D6F33002D84F7 /* HostData */ = {
+			isa = PBXGroup;
+			children = (
+				A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */,
+				A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */,
+				A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */,
+				A6F8157F1C9D6F77002D84F7 /* HostStationPoint.swift */,
+				A6F815801C9D6F77002D84F7 /* HostStation+CoreDataProperties.swift */,
+				A6F815811C9D6F77002D84F7 /* HostStation.swift */,
+				A6F815821C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift */,
+				A6F815831C9D6F77002D84F7 /* HostCity.swift */,
+			);
+			name = HostData;
 			sourceTree = "<group>";
 		};
 		DDFAFDB08DD5779A4469F31A /* Frameworks */ = {
@@ -359,16 +399,24 @@
 			files = (
 				A658625F1C9C8B58009F1CAB /* DeparturePoint.swift in Sources */,
 				A658625D1C9C8B58009F1CAB /* DepartureStation.swift in Sources */,
+				A6F815841C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift in Sources */,
 				A65861F81C9C69D6009F1CAB /* TestWay.xcdatamodeld in Sources */,
 				A658621A1C9C73AB009F1CAB /* DataManager.swift in Sources */,
 				A658625E1C9C8B58009F1CAB /* DeparturePoint+CoreDataProperties.swift in Sources */,
 				A658625B1C9C8B58009F1CAB /* DepartureCity.swift in Sources */,
+				A6F815851C9D6F77002D84F7 /* HostPoint.swift in Sources */,
+				A6F815891C9D6F77002D84F7 /* HostStation.swift in Sources */,
 				A65862631C9C9451009F1CAB /* DepartureStationPoint.swift in Sources */,
+				A6F815861C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift in Sources */,
 				A65861F01C9C69D6009F1CAB /* AppDelegate.swift in Sources */,
 				A658621C1C9C74B7009F1CAB /* RouteTableViewController.swift in Sources */,
+				A6F815881C9D6F77002D84F7 /* HostStation+CoreDataProperties.swift in Sources */,
 				A658625C1C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift in Sources */,
+				A6F8158B1C9D6F77002D84F7 /* HostCity.swift in Sources */,
 				A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */,
 				A65862651C9C97C7009F1CAB /* SelectRouteTableViewController.swift in Sources */,
+				A6F815871C9D6F77002D84F7 /* HostStationPoint.swift in Sources */,
+				A6F8158A1C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift in Sources */,
 				A658625A1C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
