@@ -116,6 +116,7 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
     private func returnFetchResult() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DepartureStation")
         let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
+//        let countryDescriptor = NSSortDescriptor(key: "countryTitle", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
@@ -137,6 +138,6 @@ class SelectRouteTableViewController: UITableViewController, NSFetchedResultsCon
 extension SelectRouteTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let station = stations[indexPath.row]
-        print(station.stationTitle, station.cityTitle, "stations")
+        print(station.stationTitle, station.cityTitle, station.countryTitle)
     }
 }
