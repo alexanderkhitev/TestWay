@@ -1,25 +1,27 @@
 //
-//  RouteTableViewController.swift
+//  SelectRouteTableViewController.swift
 //  TestWay
 //
-//  Created by Alexsander  on 3/18/16.
+//  Created by Alexsander  on 3/19/16.
 //  Copyright © 2016 Alexsander Khitev. All rights reserved.
 //
 
 import UIKit
 import Foundation
+import CoreData
 
-class RouteTableViewController: UITableViewController {
+class SelectRouteTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - var and let
-    var dataManager: DataManager!
-    
-    // MARK: - Lifecycle
+    private var fetchedResultController: NSFetchedResultsController!
+    private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    private var managedObjectContext: NSManagedObjectContext!
+    private var stations = [DepartureStation]()
 
+    // MARK: - Lifycycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataManager = DataManager()
-        dataManager.saveData(view)
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,6 +32,18 @@ class RouteTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         setSetting()
+        managedObjectContext = appDelegate.managedObjectContext
+        print("SelectRouteTableViewController")
+        fetchedResultController = NSFetchedResultsController(fetchRequest: returnFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error, error.userInfo)
+        }
+        stations = fetchedResultController.fetchedObjects as! [DepartureStation]
+        print("Number of stations \(stations.count)")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,16 +51,26 @@ class RouteTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Table view data source
 
-    /*
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1 ?? 0
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return stations.count ?? 0
+    }
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
+        let city = stations[indexPath.row]
+        
+        cell.textLabel?.text = city.stationTitle
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,7 +106,21 @@ class RouteTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - functions
+    private func setSetting() {
+        navigationController?.navigationBarHidden = false
+        tabBarController?.tabBar.hidden = true
+    }
+    
+    private func returnFetchResult() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "DepartureStation")
+        let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
 
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -90,34 +128,15 @@ class RouteTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    */
 
-    private func tableViewOpensController(index: NSIndexPath) {
-        let myStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        switch index {
-        case NSIndexPath(forRow: 0, inSection: 0):
-            let controller = myStoryboard.instantiateViewControllerWithIdentifier("SelectRouteTableViewController") as! SelectRouteTableViewController
-            showViewController(controller, sender: self)
-            print("It is the first section")
-        case NSIndexPath(forRow: 0, inSection: 1):
-            print("It is the second section")
-        case NSIndexPath(forRow: 0, inSection: 2):
-            print("It is third section")
-        default: break
-        }
-    }
-    
-    // MARK: - functions
-    private func setSetting() {
-        navigationController?.navigationBarHidden = true
-        tabBarController?.tabBar.hidden = false
-    }
 }
 
-// MARK: - Table delegate
+// MARK: - delegate functions
 
-extension RouteTableViewController {
-    
+extension SelectRouteTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableViewOpensController(indexPath)
+        let station = stations[indexPath.row]
+        print(station.stationTitle, station.cityTitle, station.countryTitle)
     }
 }

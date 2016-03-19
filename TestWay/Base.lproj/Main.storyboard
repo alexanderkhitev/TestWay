@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Расписание-->
+        <!--Route Table View Controller-->
         <scene sceneID="VeX-wv-yFD">
             <objects>
                 <tableViewController id="8ru-vD-Zlg" customClass="RouteTableViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,30 +96,40 @@
                             <outlet property="delegate" destination="8ru-vD-Zlg" id="gNU-L1-01j"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Расписание" id="vd4-xH-HsL"/>
+                    <navigationItem key="navigationItem" id="lmf-7S-xYS"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="DPt-eh-Gso" kind="show" id="aG0-76-Pbc"/>
+                        <segue destination="JEh-9L-ERR" kind="show" identifier="showSelectTVCSegue" id="m1l-Xi-sWt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXB-Iz-vtM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959" y="-156"/>
+            <point key="canvasLocation" x="1717" y="-156"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Select Route Table View Controller-->
         <scene sceneID="3HE-RJ-7Of">
             <objects>
-                <tableViewController id="JEh-9L-ERR" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SelectRouteTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JEh-9L-ERR" customClass="SelectRouteTableViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fBF-ZP-c3J">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ium-Jd-Ss5">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" textLabel="tZd-yU-EC2" style="IBUITableViewCellStyleDefault" id="ium-Jd-Ss5">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ium-Jd-Ss5" id="Lhc-xO-YYy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tZd-yU-EC2">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -129,10 +139,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="qYo-1Q-nrJ"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIC-fD-KsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448" y="-156"/>
+            <point key="canvasLocation" x="2456" y="-156"/>
         </scene>
         <!--О приложении-->
         <scene sceneID="pnW-WB-bGm">
@@ -163,7 +174,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="8ru-vD-Zlg" kind="relationship" relationship="viewControllers" id="BXq-PC-8yG"/>
+                        <segue destination="Ned-g1-uf8" kind="relationship" relationship="viewControllers" id="BXq-PC-8yG"/>
                         <segue destination="Uiy-aD-w2U" kind="relationship" relationship="viewControllers" id="uCD-Ct-px6"/>
                     </connections>
                 </tabBarController>
@@ -171,23 +182,24 @@
             </objects>
             <point key="canvasLocation" x="139" y="222"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ndy-oK-bKt">
+        <!--Расписание-->
+        <scene sceneID="AUS-Z6-Ksj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DPt-eh-Gso" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ned-g1-uf8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Расписание" id="vd4-xH-HsL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A87-KK-xkP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AIh-Ia-uBC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="JEh-9L-ERR" kind="relationship" relationship="rootViewController" id="H4e-ik-9O7"/>
+                        <segue destination="8ru-vD-Zlg" kind="relationship" relationship="rootViewController" id="cok-E3-HwX"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2V7-9T-eIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQ8-7t-oD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636" y="-156"/>
+            <point key="canvasLocation" x="959" y="-156"/>
         </scene>
     </scenes>
 </document>
