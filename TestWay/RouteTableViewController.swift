@@ -18,6 +18,7 @@ class RouteTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.definesPresentationContext = true
         dataManager = DataManager()
         dataManager.saveData(view)
         // Uncomment the following line to preserve selection between presentations

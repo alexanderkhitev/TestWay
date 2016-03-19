@@ -34,6 +34,7 @@ class SelectHostTableViewController: UITableViewController, NSFetchedResultsCont
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        self.definesPresentationContext = true
         setSetting()
         fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
@@ -108,7 +109,7 @@ class SelectHostTableViewController: UITableViewController, NSFetchedResultsCont
     
     // MARK: - functions
     private func setSetting() {
-        navigationController?.navigationBar.hidden = false
+        navigationController?.navigationBarHidden = false 
         tabBarController?.tabBar.hidden = true
     }
     

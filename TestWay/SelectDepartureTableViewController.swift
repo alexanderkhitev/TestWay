@@ -31,7 +31,7 @@ class SelectDepartureTableViewController: UITableViewController, NSFetchedResult
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
+        self.definesPresentationContext = true 
         setSetting()
         managedObjectContext = appDelegate.managedObjectContext
         print("SelectRouteTableViewController")
@@ -116,7 +116,7 @@ class SelectDepartureTableViewController: UITableViewController, NSFetchedResult
     
     private func returnFetchResult() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DepartureStation")
-        let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "cityTitle", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
