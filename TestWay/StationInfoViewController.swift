@@ -27,16 +27,12 @@ class StationInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
-        if station != nil {
-            print("station is not nil")
-        }
-//        setLabels()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-//        setLabels()
+        setLabels()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,31 +43,21 @@ class StationInfoViewController: UIViewController {
     
     // MARK: - functions
     private func setLabels() {
-        guard let stationTitle = station.stationTitle else {
-            stationTitleLabel.text = "Нету данных"
-            return
-        }
-        stationTitleLabel.text = stationTitle
-        guard let districtTitle = station.districtTitle else {
-            districtTitleLabel.text = "Нету данных"
-            return
-        }
-        districtTitleLabel.text = districtTitle
-        guard let regionTitle = station.regionTitle else {
-            regionTitleLabel.text = "Нету данных"
-            return
-        }
-        regionTitleLabel.text = regionTitle
-        guard let cityTitle = station.cityTitle else {
-            cityTitleLabel.text = "Нету данных"
-            return
-        }
-        cityTitleLabel.text = cityTitle
-        guard let countryTitle = station.countryTitle else {
-            countryTitleLabel.text = "Нету данных"
-            return
-        }
-        countryTitleLabel.text = countryTitle
+        guard let stationTitle = station.stationTitle else { return }
+        stationTitleLabel.text = "Станция: \(stationTitle)"
+        stationTitleLabel.adjustsFontSizeToFitWidth = true
+        guard let districtTitle = station.districtTitle else { return }
+        districtTitleLabel.text = "Район: \(districtTitle)"
+        districtTitleLabel.adjustsFontSizeToFitWidth = true
+        guard let regionTitle = station.regionTitle else { return }
+        regionTitleLabel.text = "Регион: \(regionTitle)"
+        regionTitleLabel.adjustsFontSizeToFitWidth = true
+        guard let cityTitle = station.cityTitle else { return }
+        cityTitleLabel.text = "Город: \(cityTitle)"
+        cityTitleLabel.adjustsFontSizeToFitWidth = true
+        guard let countryTitle = station.countryTitle else { return }
+        countryTitleLabel.text = "Страна: \(countryTitle)"
+        countryTitleLabel.adjustsFontSizeToFitWidth = true
     }
 
     /*

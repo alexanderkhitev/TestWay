@@ -221,7 +221,7 @@ extension DepartureTableViewController {
             print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
             infoController.station = currentStation
         }
-        performSegueWithIdentifier("showDepartureStationInfo", sender: self)
+        showViewController(infoController, sender: self)
         searchResults?.removeAll()
     }
     
