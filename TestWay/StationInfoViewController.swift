@@ -67,14 +67,6 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     // MARK: - IBAction
     @IBAction func selectStation(sender: UIButton) {
         removeFirstStation()
-//        @NSManaged var cityId: NSNumber?   ///
-//        @NSManaged var cityTitle: String?  ///
-//        @NSManaged var countryTitle: String?  ///
-//        @NSManaged var districtTitle: String? ///
-//        @NSManaged var regionTitle: String?  ///
-//        @NSManaged var stationId: NSNumber?  ///
-//        @NSManaged var stationTitle: String? ///
-//        @NSManaged var point: SelectedDepartureStationPoint?
         let selectedDepartureStation = NSEntityDescription.insertNewObjectForEntityForName("SelectedDepartureStation", inManagedObjectContext: managedObjectContext) as! SelectedDepartureStation
         let selectedDepartureStationPoint = NSEntityDescription.insertNewObjectForEntityForName("SelectedDepartureStationPoint", inManagedObjectContext: managedObjectContext) as! SelectedDepartureStationPoint
         selectedDepartureStation.cityId = station.cityId
@@ -90,7 +82,6 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
         
         selectedDepartureStation.point = selectedDepartureStationPoint
         
-        print(selectedDepartureStation.point?.latitude, selectedDepartureStation.point?.longitude)
         do {
             try managedObjectContext.save()
             navigationController?.popToRootViewControllerAnimated(true)
@@ -113,14 +104,13 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
             print(error.localizedDescription, error.userInfo)
         }
         guard let selectedStation = departureFetchedResultController.fetchedObjects?.first as? SelectedDepartureStation else { return }
-        print(selectedStation.stationTitle, selectedStation.cityTitle, selectedStation.point?.longitude)
+        print(departureFetchedResultController.fetchedObjects?.count)
         managedObjectContext.deleteObject(selectedStation as NSManagedObject)
         do {
             try managedObjectContext.save()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
-        print(departureFetchedResultController.fetchedObjects?.count)
     }
     
     private func fetchRequest() -> NSFetchRequest {
