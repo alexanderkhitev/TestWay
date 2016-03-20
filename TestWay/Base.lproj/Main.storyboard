@@ -177,7 +177,7 @@
         <!--Station Info View Controller-->
         <scene sceneID="29L-VF-gzo">
             <objects>
-                <viewController id="KfJ-Eq-enN" customClass="StationInfoViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StationInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KfJ-Eq-enN" customClass="StationInfoViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tiT-tG-tHs"/>
                         <viewControllerLayoutGuide type="bottom" id="Wdm-Hn-cvO"/>
@@ -224,6 +224,9 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Страна:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkR-ht-cua">
                                 <rect key="frame" x="20" y="264" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bvI-w4-0dv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -231,7 +234,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Wdm-Hn-cvO" firstAttribute="top" secondItem="pkR-ht-cua" secondAttribute="bottom" constant="296" id="1Zn-fv-zzR"/>
                             <constraint firstItem="N4w-Fh-i22" firstAttribute="trailing" secondItem="VJm-Ef-PrS" secondAttribute="trailing" id="2kT-KN-mCA"/>
                             <constraint firstItem="VJm-Ef-PrS" firstAttribute="leading" secondItem="gLa-pA-Ndc" secondAttribute="leadingMargin" id="4gb-jd-sHx"/>
                             <constraint firstItem="VJm-Ef-PrS" firstAttribute="leading" secondItem="N4w-Fh-i22" secondAttribute="leading" id="5sZ-cT-yA6"/>

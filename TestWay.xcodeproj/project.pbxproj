@@ -30,6 +30,7 @@
 		A6900B881C9D7FA20014D380 /* HostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B871C9D7FA20014D380 /* HostTableViewController.swift */; };
 		A6900B8A1C9D8A1A0014D380 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B891C9D8A1A0014D380 /* DepartureTableViewCell.swift */; };
 		A6900B8C1C9D8A480014D380 /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B8B1C9D8A480014D380 /* HostTableViewCell.swift */; };
+		A6AE145A1C9EA31200070C5E /* UIUtilits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE14591C9EA31200070C5E /* UIUtilits.swift */; };
 		A6F815841C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */; };
 		A6F815851C9D6F77002D84F7 /* HostPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */; };
 		A6F815861C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */; };
@@ -79,6 +80,7 @@
 		A6900B871C9D7FA20014D380 /* HostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewController.swift; sourceTree = "<group>"; };
 		A6900B891C9D8A1A0014D380 /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		A6900B8B1C9D8A480014D380 /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewCell.swift; sourceTree = "<group>"; };
+		A6AE14591C9EA31200070C5E /* UIUtilits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtilits.swift; sourceTree = "<group>"; };
 		A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostPoint.swift; sourceTree = "<group>"; };
 		A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				A65862191C9C73AB009F1CAB /* DataManager.swift */,
+				A6AE14591C9EA31200070C5E /* UIUtilits.swift */,
 			);
 			name = Workers;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AE145A1C9EA31200070C5E /* UIUtilits.swift in Sources */,
 				A658625F1C9C8B58009F1CAB /* DeparturePoint.swift in Sources */,
 				A658625D1C9C8B58009F1CAB /* DepartureStation.swift in Sources */,
 				A6F815841C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift in Sources */,

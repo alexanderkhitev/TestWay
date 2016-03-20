@@ -210,14 +210,16 @@ extension DepartureTableViewController {
     }
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-        print(indexPath, "accessory")
+        let infoController = UIUtilits.mainStoryboard.instantiateViewControllerWithIdentifier("StationInfoViewController") as! StationInfoViewController
         if !searchController.active {
             guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
             let currentStation = stations[indexPath.row]
             print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
+            infoController.station = currentStation
         } else {
             guard let currentStation = searchResults?[indexPath.row] else { return }
             print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
+            infoController.station = currentStation
         }
         performSegueWithIdentifier("showDepartureStationInfo", sender: self)
         searchResults?.removeAll()
