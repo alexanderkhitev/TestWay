@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		196A9F163DEA5061BA954809 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89C0163791F8EBC8199CA45 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A63AA6181C9EBE3C00019617 /* CoreDataUtilits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA6171C9EBE3C00019617 /* CoreDataUtilits.swift */; };
+		A63AA61E1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA61A1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift */; };
+		A63AA61F1C9EBF3400019617 /* SelectedDepartureStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA61B1C9EBF3400019617 /* SelectedDepartureStation.swift */; };
+		A63AA6201C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA61C1C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift */; };
+		A63AA6211C9EBF3400019617 /* SelectedDepartureStationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA61D1C9EBF3400019617 /* SelectedDepartureStationPoint.swift */; };
 		A65861F01C9C69D6009F1CAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65861EF1C9C69D6009F1CAB /* AppDelegate.swift */; };
 		A65861F51C9C69D6009F1CAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65861F31C9C69D6009F1CAB /* Main.storyboard */; };
 		A65861F81C9C69D6009F1CAB /* TestWay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A65861F61C9C69D6009F1CAB /* TestWay.xcdatamodeld */; };
@@ -54,6 +59,11 @@
 /* Begin PBXFileReference section */
 		47F55270C995DBAF9BB94C10 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		70864F2DF855BF8D6AD3B7DD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A63AA6171C9EBE3C00019617 /* CoreDataUtilits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUtilits.swift; sourceTree = "<group>"; };
+		A63AA61A1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectedDepartureStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A63AA61B1C9EBF3400019617 /* SelectedDepartureStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDepartureStation.swift; sourceTree = "<group>"; };
+		A63AA61C1C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectedDepartureStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A63AA61D1C9EBF3400019617 /* SelectedDepartureStationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDepartureStationPoint.swift; sourceTree = "<group>"; };
 		A65861EC1C9C69D6009F1CAB /* TestWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65861EF1C9C69D6009F1CAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65861F41C9C69D6009F1CAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +121,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A63AA6191C9EBF1D00019617 /* DepartureSelectedData */ = {
+			isa = PBXGroup;
+			children = (
+				A63AA61A1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift */,
+				A63AA61B1C9EBF3400019617 /* SelectedDepartureStation.swift */,
+				A63AA61C1C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift */,
+				A63AA61D1C9EBF3400019617 /* SelectedDepartureStationPoint.swift */,
+			);
+			name = DepartureSelectedData;
+			sourceTree = "<group>";
+		};
 		A65861E31C9C69D6009F1CAB = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +193,7 @@
 			children = (
 				A65862191C9C73AB009F1CAB /* DataManager.swift */,
 				A6AE14591C9EA31200070C5E /* UIUtilits.swift */,
+				A63AA6171C9EBE3C00019617 /* CoreDataUtilits.swift */,
 			);
 			name = Workers;
 			sourceTree = "<group>";
@@ -223,6 +245,7 @@
 		A6F8157A1C9D6F1F002D84F7 /* DepartureData */ = {
 			isa = PBXGroup;
 			children = (
+				A63AA6191C9EBF1D00019617 /* DepartureSelectedData */,
 				A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */,
 				A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */,
 				A65862521C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift */,
@@ -421,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6AE145A1C9EA31200070C5E /* UIUtilits.swift in Sources */,
+				A63AA61F1C9EBF3400019617 /* SelectedDepartureStation.swift in Sources */,
 				A658625F1C9C8B58009F1CAB /* DeparturePoint.swift in Sources */,
 				A658625D1C9C8B58009F1CAB /* DepartureStation.swift in Sources */,
 				A6F815841C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift in Sources */,
@@ -432,17 +456,21 @@
 				A6F815851C9D6F77002D84F7 /* HostPoint.swift in Sources */,
 				A6F815891C9D6F77002D84F7 /* HostStation.swift in Sources */,
 				A65862631C9C9451009F1CAB /* DepartureStationPoint.swift in Sources */,
+				A63AA6201C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift in Sources */,
 				A6F815861C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift in Sources */,
 				A65861F01C9C69D6009F1CAB /* AppDelegate.swift in Sources */,
 				A658621C1C9C74B7009F1CAB /* RouteTableViewController.swift in Sources */,
 				A6F815881C9D6F77002D84F7 /* HostStation+CoreDataProperties.swift in Sources */,
+				A63AA6211C9EBF3400019617 /* SelectedDepartureStationPoint.swift in Sources */,
 				A658625C1C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift in Sources */,
 				A6F8158B1C9D6F77002D84F7 /* HostCity.swift in Sources */,
+				A63AA61E1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift in Sources */,
 				A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */,
 				A65862651C9C97C7009F1CAB /* DepartureTableViewController.swift in Sources */,
 				A68C0D941C9E9D5100504CBA /* StationInfoViewController.swift in Sources */,
 				A6900B8C1C9D8A480014D380 /* HostTableViewCell.swift in Sources */,
 				A6F815871C9D6F77002D84F7 /* HostStationPoint.swift in Sources */,
+				A63AA6181C9EBE3C00019617 /* CoreDataUtilits.swift in Sources */,
 				A6F8158A1C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift in Sources */,
 				A658625A1C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift in Sources */,
 				A6900B881C9D7FA20014D380 /* HostTableViewController.swift in Sources */,

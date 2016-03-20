@@ -44,8 +44,8 @@ public class DataManager {
         let json = try! NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments) as! [String : AnyObject]
         
         if let departureCities = json["citiesFrom"] as? [[String: AnyObject]] {
-            var checkDigit = 0
-            var checkStationDigit = 0
+            //var checkDigit = 0
+            //var checkStationDigit = 0
             for city in departureCities {
                 let departureCityEntity = entity("DepartureCity", managedObjectContext: managedObjectContext) as! DepartureCity
                 let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
@@ -71,8 +71,8 @@ public class DataManager {
                 departureCityEntity.point = departureCityPointEntity
                 
                 // check 
-                checkDigit += 1
-                print("city", checkDigit)
+                //checkDigit += 1
+                //print("city", checkDigit)
 
                 for station in stations {
                     let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
@@ -111,17 +111,17 @@ public class DataManager {
                         print("error when save", error.localizedDescription, error.userInfo)
                     }
                     
-                    checkStationDigit += 1
+                    //checkStationDigit += 1
                 }
-                print("checkStationDigit \(checkStationDigit)")
+                //print("checkStationDigit \(checkStationDigit)")
             }
         } else {
             print("there is an error in departureCity")
         }
         
         if let hostCities = json["citiesTo"] as? [[String : AnyObject]] {
-            var checkDigit = 0
-            var checkStationDigit = 0
+//            var checkDigit = 0
+//            var checkStationDigit = 0
             for city in hostCities {
                 let departureCityEntity = entity("HostCity", managedObjectContext: managedObjectContext) as! HostCity
                 let departureCityPointEntity = entity("HostPoint", managedObjectContext: managedObjectContext) as! HostPoint
@@ -147,8 +147,8 @@ public class DataManager {
                 departureCityEntity.point = departureCityPointEntity
                 
                 // check
-                checkDigit += 1
-                print("host city", checkDigit)
+               // checkDigit += 1
+                //print("host city", checkDigit)
                 
                 for station in stations {
                     let departureStationEntity = entity("HostStation", managedObjectContext: managedObjectContext) as! HostStation
@@ -187,9 +187,9 @@ public class DataManager {
                         print("error when save", error.localizedDescription, error.userInfo)
                     }
                     
-                    checkStationDigit += 1
+//                    checkStationDigit += 1
                 }
-                print("host checkStationDigit \(checkStationDigit)")
+//                print("host checkStationDigit \(checkStationDigit)")
             }
         } else {
             print("there is an error in host city")

@@ -10,9 +10,10 @@ import UIKit
 import Foundation
 import CoreData
 
-class StationInfoViewController: UIViewController {
+class StationInfoViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     // MARK: - var and let
+    private var fetchedResultController: NSFetchedResultsController!
     var station: DepartureStation!
     
     // MARK: - IBOutlet
@@ -62,17 +63,64 @@ class StationInfoViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func selectStation(sender: UIButton) {
+        removeFirstStation()
+//        @NSManaged var cityId: NSNumber?   ///
+//        @NSManaged var cityTitle: String?  ///
+//        @NSManaged var countryTitle: String?  ///
+//        @NSManaged var districtTitle: String? ///
+//        @NSManaged var regionTitle: String?  ///
+//        @NSManaged var stationId: NSNumber?  ///
+//        @NSManaged var stationTitle: String? ///
+//        @NSManaged var point: SelectedDepartureStationPoint?
+        CoreDataUtilits.selectedDepartureStation.cityId = station.cityId
+        CoreDataUtilits.selectedDepartureStation.cityTitle = station.cityTitle
+        CoreDataUtilits.selectedDepartureStation.countryTitle = station.countryTitle
+        CoreDataUtilits.selectedDepartureStation.districtTitle = station.districtTitle
+        CoreDataUtilits.selectedDepartureStation.regionTitle = station.regionTitle
+        CoreDataUtilits.selectedDepartureStation.stationId = station.stationId
+        CoreDataUtilits.selectedDepartureStation.stationTitle = station.stationTitle
+    
+        CoreDataUtilits.selectedDepartureStationPoint.latitude = station.point?.latitude
+        CoreDataUtilits.selectedDepartureStationPoint.longitude = station.point?.longitude
         
+        CoreDataUtilits.selectedDepartureStation.point = CoreDataUtilits.selectedDepartureStationPoint
+        do {
+            try CoreDataUtilits.managedObjectContext.save()
+            print("saved core data")
+            navigationController?.popToRootViewControllerAnimated(true)
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+            let alertController = UIAlertController(title: nil, message: "Произошла ошибка, сохранение не возможно", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ок", style: .Cancel, handler: { (alert) -> Void in
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }))
+            presentViewController(alertController, animated: true, completion: nil)
+        }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func removeFirstStation() {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: CoreDataUtilits.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+        guard let selectedStation = fetchedResultController.fetchedObjects?.first as? SelectedDepartureStation else { return }
+        CoreDataUtilits.managedObjectContext.deleteObject(selectedStation as NSManagedObject)
+        do {
+            try CoreDataUtilits.managedObjectContext.save()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+        print(fetchedResultController.fetchedObjects?.count)
     }
-    */
+    
+    private func fetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "SelectedDepartureStation")
+        let sortDescriptor = NSSortDescriptor(key: "stationTitle", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
 
 }

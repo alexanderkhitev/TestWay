@@ -15,10 +15,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection id="djT-G5-Gxp">
+                            <tableViewSection headerTitle="Станция отправления" id="djT-G5-Gxp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wke-6b-bZj">
-                                        <rect key="frame" x="0.0" y="35" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wke-6b-bZj" id="SYx-7N-S09">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -40,10 +40,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="sWB-OR-LqK">
+                            <tableViewSection headerTitle="Станция прибытия" id="sWB-OR-LqK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ABw-HW-IFB">
-                                        <rect key="frame" x="0.0" y="115" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="145" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ABw-HW-IFB" id="LcX-Fg-rQ2">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -65,10 +65,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="OoQ-s5-JkK">
+                            <tableViewSection headerTitle="Время" id="OoQ-s5-JkK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0Kp-3R-IA3">
-                                        <rect key="frame" x="0.0" y="195" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="240" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Kp-3R-IA3" id="oqL-QE-laH">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -238,7 +238,7 @@
                                     <constraint firstAttribute="height" constant="38" id="nBb-Jh-p97"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Выбрать эту станцию?"/>
+                                <state key="normal" title="Выбрать эту станцию"/>
                                 <connections>
                                     <action selector="selectStation:" destination="KfJ-Eq-enN" eventType="touchUpInside" id="HTR-LY-5Fs"/>
                                 </connections>

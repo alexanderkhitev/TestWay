@@ -62,14 +62,31 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <relationship name="station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HostStation" inverseName="point" inverseEntity="HostStation" syncable="YES"/>
     </entity>
+    <entity name="SelectedDepartureStation" representedClassName="SelectedDepartureStation" syncable="YES">
+        <attribute name="cityId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="cityTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="districtTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="regionTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="stationTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="point" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SelectedDepartureStationPoint" inverseName="station" inverseEntity="SelectedDepartureStationPoint" syncable="YES"/>
+    </entity>
+    <entity name="SelectedDepartureStationPoint" representedClassName="SelectedDepartureStationPoint" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <relationship name="station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SelectedDepartureStation" inverseName="point" inverseEntity="SelectedDepartureStation" syncable="YES"/>
+    </entity>
     <elements>
         <element name="DepartureCity" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="DeparturePoint" positionX="304" positionY="-18" width="128" height="88"/>
         <element name="DepartureStation" positionX="90" positionY="171" width="128" height="178"/>
         <element name="DepartureStationPoint" positionX="306" positionY="234" width="128" height="88"/>
-        <element name="HostStation" positionX="-810" positionY="144" width="128" height="178"/>
         <element name="HostCity" positionX="-803" positionY="-72" width="128" height="163"/>
         <element name="HostPoint" positionX="-513" positionY="81" width="128" height="88"/>
+        <element name="HostStation" positionX="-810" positionY="144" width="128" height="178"/>
         <element name="HostStationPoint" positionX="-515" positionY="216" width="128" height="88"/>
+        <element name="SelectedDepartureStationPoint" positionX="-279" positionY="234" width="128" height="88"/>
+        <element name="SelectedDepartureStation" positionX="-279" positionY="36" width="128" height="165"/>
     </elements>
 </model>
