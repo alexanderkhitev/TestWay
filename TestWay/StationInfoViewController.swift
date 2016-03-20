@@ -13,7 +13,7 @@ import CoreData
 class StationInfoViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     // MARK: - var and let
-    private var fetchedResultController: NSFetchedResultsController!
+    private var departureFetchedResultController: NSFetchedResultsController!
     var station: DepartureStation!
     
     // MARK: - IBOutlet
@@ -40,7 +40,6 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     // MARK: - functions
     private func setLabels() {
@@ -84,6 +83,8 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
         CoreDataUtilits.selectedDepartureStationPoint.longitude = station.point?.longitude
         
         CoreDataUtilits.selectedDepartureStation.point = CoreDataUtilits.selectedDepartureStationPoint
+        
+        print(CoreDataUtilits.selectedDepartureStation.point?.latitude, CoreDataUtilits.selectedDepartureStation.point?.longitude)
         do {
             try CoreDataUtilits.managedObjectContext.save()
             print("saved core data")
@@ -99,21 +100,22 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     }
 
     private func removeFirstStation() {
-        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: CoreDataUtilits.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultController.delegate = self
+        departureFetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: CoreDataUtilits.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        departureFetchedResultController.delegate = self
         do {
-            try fetchedResultController.performFetch()
+            try departureFetchedResultController.performFetch()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
-        guard let selectedStation = fetchedResultController.fetchedObjects?.first as? SelectedDepartureStation else { return }
+        guard let selectedStation = departureFetchedResultController.fetchedObjects?.first as? SelectedDepartureStation else { return }
+        print(selectedStation.stationTitle, selectedStation.cityTitle, selectedStation.point?.longitude)
         CoreDataUtilits.managedObjectContext.deleteObject(selectedStation as NSManagedObject)
         do {
             try CoreDataUtilits.managedObjectContext.save()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
-        print(fetchedResultController.fetchedObjects?.count)
+        print(departureFetchedResultController.fetchedObjects?.count)
     }
     
     private func fetchRequest() -> NSFetchRequest {

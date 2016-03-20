@@ -75,7 +75,7 @@
     <entity name="SelectedDepartureStationPoint" representedClassName="SelectedDepartureStationPoint" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
-        <relationship name="station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SelectedDepartureStation" inverseName="point" inverseEntity="SelectedDepartureStation" syncable="YES"/>
+        <relationship name="station" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="SelectedDepartureStation" inverseName="point" inverseEntity="SelectedDepartureStation" syncable="YES"/>
     </entity>
     <elements>
         <element name="DepartureCity" positionX="-63" positionY="-18" width="128" height="163"/>
@@ -86,7 +86,7 @@
         <element name="HostPoint" positionX="-513" positionY="81" width="128" height="88"/>
         <element name="HostStation" positionX="-810" positionY="144" width="128" height="178"/>
         <element name="HostStationPoint" positionX="-515" positionY="216" width="128" height="88"/>
-        <element name="SelectedDepartureStationPoint" positionX="-279" positionY="234" width="128" height="88"/>
-        <element name="SelectedDepartureStation" positionX="-279" positionY="36" width="128" height="165"/>
+        <element name="SelectedDepartureStation" positionX="-279" positionY="36" width="128" height="163"/>
+        <element name="SelectedDepartureStationPoint" positionX="-270" positionY="279" width="128" height="90"/>
     </elements>
 </model>

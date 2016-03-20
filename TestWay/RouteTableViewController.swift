@@ -95,12 +95,10 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
         switch index {
         case NSIndexPath(forRow: 0, inSection: 0):
             performSegueWithIdentifier("showDepartureTVC", sender: self)
-            print("It is the first section")
         case NSIndexPath(forRow: 0, inSection: 1):
             performSegueWithIdentifier("showHostTVC", sender: self)
-            print("It is the second section")
         case NSIndexPath(forRow: 0, inSection: 2):
-            print("It is third section")
+            break
         default: break
         }
     }
