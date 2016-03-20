@@ -236,7 +236,7 @@ extension DepartureTableViewController: UISearchControllerDelegate, UISearchBarD
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         searchResults?.removeAll()
         guard let searchText = searchController.searchBar.text else { return }
-        searchPredicate = NSPredicate(format: "stationTitle contains [c] %@", searchText)
+        searchPredicate = NSPredicate(format: "stationTitle contains [cd] %@ OR cityTitle contains [c] %@", searchText, searchText)
         searchResults = stationFetchedResultController.fetchedObjects?.filter() {
             return searchPredicate.evaluateWithObject($0)
         } as? [DepartureStation]
