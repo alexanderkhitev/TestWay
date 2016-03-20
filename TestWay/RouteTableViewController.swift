@@ -14,11 +14,16 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     
     // MARK: - var and let
     var dataManager: DataManager!
-    private var departureFetchedController: NSFetchedResultsController!
+    private var selectedDepartureFetchedController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext {
         return appDelegate.managedObjectContext
     }
+    private var selectedDepartureStation: SelectedDepartureStation!
+    
+    // MARK: - IBOutlet
+    
+    @IBOutlet weak var departureStationOutlet: UITableViewCell!
     
     // MARK: - Lifecycle
 
@@ -113,13 +118,21 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
         tabBarController?.tabBar.hidden = false
     }
     
+    // MARK: - getting data of selected stations
     private func setFetchedResultsControllers() {
-        departureFetchedController = NSFetchedResultsController(fetchRequest: departureFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        departureFetchedController.delegate = self
+        selectedDepartureFetchedController = NSFetchedResultsController(fetchRequest: departureFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        selectedDepartureFetchedController.delegate = self
         do {
-            try departureFetchedController.performFetch()
+            try selectedDepartureFetchedController.performFetch()
         } catch let error as NSError {
             print(error.localizedDescription, error.localizedDescription)
+        }
+        if selectedDepartureFetchedController.fetchedObjects?.first != nil {
+            selectedDepartureStation = selectedDepartureFetchedController.fetchedObjects!.first as! SelectedDepartureStation
+            guard let stationTitle = selectedDepartureStation.stationTitle else { return }
+            departureStationOutlet.textLabel?.text = stationTitle
+        } else {
+            departureStationOutlet.textLabel?.text = "Откуда?"
         }
     }
     
