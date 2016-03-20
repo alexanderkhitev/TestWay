@@ -26,6 +26,7 @@
 		A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */; };
 		A65862631C9C9451009F1CAB /* DepartureStationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */; };
 		A65862651C9C97C7009F1CAB /* DepartureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65862641C9C97C7009F1CAB /* DepartureTableViewController.swift */; };
+		A68C0D941C9E9D5100504CBA /* StationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C0D931C9E9D5100504CBA /* StationInfoViewController.swift */; };
 		A6900B881C9D7FA20014D380 /* HostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B871C9D7FA20014D380 /* HostTableViewController.swift */; };
 		A6900B8A1C9D8A1A0014D380 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B891C9D8A1A0014D380 /* DepartureTableViewCell.swift */; };
 		A6900B8C1C9D8A480014D380 /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B8B1C9D8A480014D380 /* HostTableViewCell.swift */; };
@@ -74,6 +75,7 @@
 		A65862601C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepartureStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A65862611C9C9451009F1CAB /* DepartureStationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureStationPoint.swift; sourceTree = "<group>"; };
 		A65862641C9C97C7009F1CAB /* DepartureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureTableViewController.swift; sourceTree = "<group>"; };
+		A68C0D931C9E9D5100504CBA /* StationInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfoViewController.swift; sourceTree = "<group>"; };
 		A6900B871C9D7FA20014D380 /* HostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewController.swift; sourceTree = "<group>"; };
 		A6900B891C9D8A1A0014D380 /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		A6900B8B1C9D8A480014D380 /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				A658621B1C9C74B7009F1CAB /* RouteTableViewController.swift */,
 				A65862641C9C97C7009F1CAB /* DepartureTableViewController.swift */,
 				A6900B871C9D7FA20014D380 /* HostTableViewController.swift */,
+				A68C0D931C9E9D5100504CBA /* StationInfoViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				A6F8158B1C9D6F77002D84F7 /* HostCity.swift in Sources */,
 				A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */,
 				A65862651C9C97C7009F1CAB /* DepartureTableViewController.swift in Sources */,
+				A68C0D941C9E9D5100504CBA /* StationInfoViewController.swift in Sources */,
 				A6900B8C1C9D8A480014D380 /* HostTableViewCell.swift in Sources */,
 				A6F815871C9D6F77002D84F7 /* HostStationPoint.swift in Sources */,
 				A6F8158A1C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift in Sources */,

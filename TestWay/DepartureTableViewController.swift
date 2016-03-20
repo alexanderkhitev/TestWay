@@ -209,6 +209,20 @@ extension DepartureTableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        print(indexPath, "accessory")
+        if !searchController.active {
+            guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
+            let currentStation = stations[indexPath.row]
+            print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
+        } else {
+            guard let currentStation = searchResults?[indexPath.row] else { return }
+            print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
+        }
+        performSegueWithIdentifier("showDepartureStationInfo", sender: self)
+        searchResults?.removeAll()
+    }
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
     }
