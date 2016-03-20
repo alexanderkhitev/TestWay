@@ -59,7 +59,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         if !searchController.active {
             return cities.count ?? 0
         } else {
-            return searchResults?.count ?? 0
+            return 1 ?? 0
         }
     }
     
@@ -67,7 +67,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         if !searchController.active {
             return cities[section].stations!.count ?? 0
         } else {
-            return 1 ?? 0
+            return searchResults?.count ?? 0
         }
     }
     
@@ -207,6 +207,14 @@ extension DepartureTableViewController {
             guard let station = searchResults?[indexPath.row] else { return }
             print(station.stationTitle, station.countryTitle, station.cityTitle)
         }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
     }
 }
 
