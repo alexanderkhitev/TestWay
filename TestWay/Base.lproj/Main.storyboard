@@ -46,19 +46,19 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Станция прибытия" id="sWB-OR-LqK">
+                            <tableViewSection headerTitle="Станция прибытия" id="3CI-Gv-Qek">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ABw-HW-IFB" customClass="RouteHostTableViewCell" customModule="TestWay" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LtR-re-wfy" customClass="RouteHostTableViewCell" customModule="TestWay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="145" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ABw-HW-IFB" id="LcX-Fg-rQ2">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LtR-re-wfy" id="TtY-uh-Doq">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npZ-xB-Wuq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mb7-Oc-ZLx">
                                                     <rect key="frame" x="8" y="11" width="584" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="lXp-BT-AUr"/>
+                                                        <constraint firstAttribute="height" constant="21" id="lug-pi-QLa"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,13 +66,13 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="npZ-xB-Wuq" firstAttribute="centerY" secondItem="LcX-Fg-rQ2" secondAttribute="centerY" id="IMg-Al-Ko1"/>
-                                                <constraint firstItem="npZ-xB-Wuq" firstAttribute="leading" secondItem="LcX-Fg-rQ2" secondAttribute="leadingMargin" id="Ox6-xR-BON"/>
-                                                <constraint firstItem="npZ-xB-Wuq" firstAttribute="trailing" secondItem="LcX-Fg-rQ2" secondAttribute="trailingMargin" id="Rlt-pX-ttP"/>
+                                                <constraint firstItem="Mb7-Oc-ZLx" firstAttribute="trailing" secondItem="TtY-uh-Doq" secondAttribute="trailingMargin" id="50v-zg-JTV"/>
+                                                <constraint firstItem="Mb7-Oc-ZLx" firstAttribute="centerY" secondItem="TtY-uh-Doq" secondAttribute="centerY" id="JcL-7T-q8s"/>
+                                                <constraint firstItem="Mb7-Oc-ZLx" firstAttribute="leading" secondItem="TtY-uh-Doq" secondAttribute="leadingMargin" id="TQu-nD-71S"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="stationTitleLabel" destination="npZ-xB-Wuq" id="Dvm-fB-6An"/>
+                                            <outlet property="stationTitleLabel" destination="Mb7-Oc-ZLx" id="lRn-mN-xli"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -112,7 +112,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="routeDepartureCell" destination="wke-6b-bZj" id="Rc2-bl-Gi9"/>
-                        <outlet property="routeHostCell" destination="ABw-HW-IFB" id="tcX-g2-VGr"/>
+                        <outlet property="routeHostCell" destination="LtR-re-wfy" id="zAP-Ay-InL"/>
                         <segue destination="LO3-Ui-Ywy" kind="show" identifier="showDepartureTVC" id="Ndh-2K-1E1"/>
                         <segue destination="CnD-kn-PSH" kind="show" identifier="showHostTVC" id="3hL-4R-ZIV"/>
                     </connections>
