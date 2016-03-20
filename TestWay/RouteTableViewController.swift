@@ -20,12 +20,11 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     private var managedObjectContext: NSManagedObjectContext {
         return appDelegate.managedObjectContext
     }
-//    private var selectedDepartureStation: SelectedDepartureStation!
     
     // MARK: - IBOutlet
     
-    @IBOutlet weak var departureStationOutlet: UITableViewCell!
-    @IBOutlet weak var hostStationOutlet: UITableViewCell!
+    @IBOutlet weak var routeDepartureCell: RouteDepartureTableViewCell!
+    @IBOutlet weak var routeHostCell: RouteHostTableViewCell!
     
     // MARK: - Lifecycle
 
@@ -75,14 +74,14 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
             print(error.localizedDescription, error.localizedDescription)
         }
         guard let departureStation = selectedDepartureFetchedController.fetchedObjects?.first as? SelectedDepartureStation else {
-            departureStationOutlet.textLabel?.text = "Откуда?"
+            routeDepartureCell.stationTitleLabel?.text = "Откуда?"
             return
         }
         guard let departureStationTitle = departureStation.stationTitle else {
-            departureStationOutlet.textLabel?.text = "Откуда?"
+            routeDepartureCell.stationTitleLabel?.text = "Откуда?"
             return
         }
-        departureStationOutlet.textLabel?.text = departureStationTitle
+        routeDepartureCell.stationTitleLabel?.text = departureStationTitle
         
         // host
         selectedHostFetchedController = NSFetchedResultsController(fetchRequest: hostFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -94,12 +93,15 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
         }
         
         guard let hostStation = selectedHostFetchedController.fetchedObjects?.first as? SelectedHostStation else {
-            hostStationOutlet.textLabel?.text = "Куда?"
+            routeHostCell.stationTitleLabel?.text = "Куда?"
             return
         }
         
-        guard let hostStationTitle = hostStation.stationTitle else { return }
-        hostStationOutlet.textLabel?.text = hostStationTitle
+        guard let hostStationTitle = hostStation.stationTitle else {
+            routeHostCell.stationTitleLabel?.text = "Куда?"
+            return
+        }
+        routeHostCell.stationTitleLabel?.text = hostStationTitle
     }
     
     private func departureFetchRequest() -> NSFetchRequest {
