@@ -92,7 +92,6 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
             cell.countryTitleLabel.text = station.countryTitle
             cell.cityTitleLabel.text = station.cityTitle
         }
-        //
         return cell
     }
     

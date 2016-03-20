@@ -87,10 +87,8 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     // MARK: - IBAction
     @IBAction func selectStation(sender: UIButton) {
         if departureStation != nil {
-            print("departureStation != nil")
             saveDepartureStation()
         } else {
-            print("host station != nil ")
             saveHostStation()
         }
     }
@@ -182,7 +180,6 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     private func removeHostStation() {
-        print("removeHostStation")
         hostFetchedResultController = NSFetchedResultsController(fetchRequest: fetchHostRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         hostFetchedResultController.delegate = self
 
