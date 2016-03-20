@@ -14,7 +14,9 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
 
     // MARK: - var and let
     private var departureFetchedResultController: NSFetchedResultsController!
-    var station: DepartureStation!
+    private var hostFetchedResultController: NSFetchedResultsController!
+    var departureStation: DepartureStation!
+    var hostStation: HostStation!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext {
         return appDelegate.managedObjectContext
@@ -47,38 +49,66 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     
     // MARK: - functions
     private func setLabels() {
-        guard let stationTitle = station.stationTitle else { return }
-        stationTitleLabel.text = "Станция: \(stationTitle)"
-        stationTitleLabel.adjustsFontSizeToFitWidth = true
-        guard let districtTitle = station.districtTitle else { return }
-        districtTitleLabel.text = "Район: \(districtTitle)"
-        districtTitleLabel.adjustsFontSizeToFitWidth = true
-        guard let regionTitle = station.regionTitle else { return }
-        regionTitleLabel.text = "Регион: \(regionTitle)"
-        regionTitleLabel.adjustsFontSizeToFitWidth = true
-        guard let cityTitle = station.cityTitle else { return }
-        cityTitleLabel.text = "Город: \(cityTitle)"
-        cityTitleLabel.adjustsFontSizeToFitWidth = true
-        guard let countryTitle = station.countryTitle else { return }
-        countryTitleLabel.text = "Страна: \(countryTitle)"
-        countryTitleLabel.adjustsFontSizeToFitWidth = true
+        if departureStation != nil {
+            guard let stationTitle = departureStation.stationTitle else { return }
+            stationTitleLabel.text = "Станция: \(stationTitle)"
+            stationTitleLabel.adjustsFontSizeToFitWidth = true
+            guard let districtTitle = departureStation.districtTitle else { return }
+            districtTitleLabel.text = "Район: \(districtTitle)"
+            districtTitleLabel.adjustsFontSizeToFitWidth = true
+            guard let regionTitle = departureStation.regionTitle else { return }
+            regionTitleLabel.text = "Регион: \(regionTitle)"
+            regionTitleLabel.adjustsFontSizeToFitWidth = true
+            guard let cityTitle = departureStation.cityTitle else { return }
+            cityTitleLabel.text = "Город: \(cityTitle)"
+            cityTitleLabel.adjustsFontSizeToFitWidth = true
+            guard let countryTitle = departureStation.countryTitle else { return }
+            countryTitleLabel.text = "Страна: \(countryTitle)"
+            countryTitleLabel.adjustsFontSizeToFitWidth = true
+        } else {
+            guard let stationTitle = hostStation.stationTitle else { return }
+            stationTitleLabel.text = "Станция: \(stationTitle)"
+            stationTitleLabel.adjustsFontSizeToFitWidth = true
+            guard let districtTitle = hostStation.districtTitle else { return }
+            districtTitleLabel.text = "Район: \(districtTitle)"
+            districtTitleLabel.adjustsFontSizeToFitWidth = true
+            guard let regionTitle = hostStation.regionTitle else { return }
+            regionTitleLabel.text = "Регион: \(regionTitle)"
+            regionTitleLabel.adjustsFontSizeToFitWidth = true
+            guard let cityTitle = hostStation.cityTitle else { return }
+            cityTitleLabel.text = "Город: \(cityTitle)"
+            cityTitleLabel.adjustsFontSizeToFitWidth = true
+            guard let countryTitle = hostStation.countryTitle else { return }
+            countryTitleLabel.text = "Страна: \(countryTitle)"
+            countryTitleLabel.adjustsFontSizeToFitWidth = true
+        }
     }
     
     // MARK: - IBAction
     @IBAction func selectStation(sender: UIButton) {
-        removeFirstStation()
+        if departureStation != nil {
+            print("departureStation != nil")
+            saveDepartureStation()
+        } else {
+            print("host station != nil ")
+            saveHostStation()
+        }
+    }
+
+    private func saveDepartureStation() {
+        removeDepartureStation()
         let selectedDepartureStation = NSEntityDescription.insertNewObjectForEntityForName("SelectedDepartureStation", inManagedObjectContext: managedObjectContext) as! SelectedDepartureStation
         let selectedDepartureStationPoint = NSEntityDescription.insertNewObjectForEntityForName("SelectedDepartureStationPoint", inManagedObjectContext: managedObjectContext) as! SelectedDepartureStationPoint
-        selectedDepartureStation.cityId = station.cityId
-        selectedDepartureStation.cityTitle = station.cityTitle
-        selectedDepartureStation.countryTitle = station.countryTitle
-        selectedDepartureStation.districtTitle = station.districtTitle
-        selectedDepartureStation.regionTitle = station.regionTitle
-        selectedDepartureStation.stationId = station.stationId
-        selectedDepartureStation.stationTitle = station.stationTitle
-    
-        selectedDepartureStationPoint.latitude = station.point?.latitude
-        selectedDepartureStationPoint.longitude = station.point?.longitude
+        selectedDepartureStation.cityId = departureStation.cityId
+        selectedDepartureStation.cityTitle = departureStation.cityTitle
+        selectedDepartureStation.countryTitle = departureStation.countryTitle
+        selectedDepartureStation.districtTitle = departureStation.districtTitle
+        selectedDepartureStation.regionTitle = departureStation.regionTitle
+        selectedDepartureStation.stationId = departureStation.stationId
+        selectedDepartureStation.stationTitle = departureStation.stationTitle
+        
+        selectedDepartureStationPoint.latitude = departureStation.point?.latitude
+        selectedDepartureStationPoint.longitude = departureStation.point?.longitude
         
         selectedDepartureStation.point = selectedDepartureStationPoint
         
@@ -95,8 +125,8 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
         }
     }
 
-    private func removeFirstStation() {
-        departureFetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+    private func removeDepartureStation() {
+        departureFetchedResultController = NSFetchedResultsController(fetchRequest: fetchDepartureRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         departureFetchedResultController.delegate = self
         do {
             try departureFetchedResultController.performFetch()
@@ -113,8 +143,65 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
         }
     }
     
-    private func fetchRequest() -> NSFetchRequest {
+    private func fetchDepartureRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "SelectedDepartureStation")
+        let sortDescriptor = NSSortDescriptor(key: "stationTitle", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
+    // host
+    private func saveHostStation() {
+        removeHostStation()
+        let selectedHostStation = NSEntityDescription.insertNewObjectForEntityForName("SelectedHostStation", inManagedObjectContext: managedObjectContext) as! SelectedHostStation
+        let selectedHostStationPoint = NSEntityDescription.insertNewObjectForEntityForName("SelectedHostStationPoint", inManagedObjectContext: managedObjectContext) as! SelectedHostStationPoint
+        selectedHostStation.cityId = hostStation.cityId
+        selectedHostStation.cityTitle = hostStation.cityTitle
+        selectedHostStation.countryTitle = hostStation.countryTitle
+        selectedHostStation.districtTitle = hostStation.districtTitle
+        selectedHostStation.regionTitle = hostStation.regionTitle
+        selectedHostStation.stationId = hostStation.stationId
+        selectedHostStation.stationTitle = hostStation.stationTitle
+        
+        selectedHostStationPoint.latitude = hostStation.point?.latitude
+        selectedHostStationPoint.longitude = hostStation.point?.longitude
+        
+        selectedHostStation.point = selectedHostStationPoint
+        
+        do {
+            try managedObjectContext.save()
+            navigationController?.popToRootViewControllerAnimated(true)
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+            let alertController = UIAlertController(title: nil, message: "Произошла ошибка, сохранение не возможно", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ок", style: .Cancel, handler: { (alert) -> Void in
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }))
+            presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    private func removeHostStation() {
+        print("removeHostStation")
+        hostFetchedResultController = NSFetchedResultsController(fetchRequest: fetchHostRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        hostFetchedResultController.delegate = self
+
+        do {
+            try hostFetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+        guard let selectedStation = hostFetchedResultController.fetchedObjects?.first as? SelectedHostStation else { return }
+        managedObjectContext.deleteObject(selectedStation as NSManagedObject)
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+    }
+    
+    private func fetchHostRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "SelectedHostStation")
         let sortDescriptor = NSSortDescriptor(key: "stationTitle", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest

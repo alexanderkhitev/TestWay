@@ -52,8 +52,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Куда?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npZ-xB-Wuq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npZ-xB-Wuq">
                                                     <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="lXp-BT-AUr"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -103,6 +106,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="departureStationOutlet" destination="wke-6b-bZj" id="BYo-6G-bUo"/>
+                        <outlet property="hostStationOutlet" destination="ABw-HW-IFB" id="v6B-4q-EUY"/>
                         <segue destination="LO3-Ui-Ywy" kind="show" identifier="showDepartureTVC" id="Ndh-2K-1E1"/>
                         <segue destination="CnD-kn-PSH" kind="show" identifier="showHostTVC" id="3hL-4R-ZIV"/>
                     </connections>
@@ -287,27 +291,54 @@
         <scene sceneID="vwy-Us-Tuo">
             <objects>
                 <tableViewController storyboardIdentifier="HostTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CnD-kn-PSH" customClass="HostTableViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0G0-Jr-4nt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="0G0-Jr-4nt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostCell" textLabel="cqW-ib-hzW" style="IBUITableViewCellStyleDefault" id="WsG-SI-NsY">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostCell" id="WsG-SI-NsY" customClass="HostTableViewCell" customModule="TestWay" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WsG-SI-NsY" id="95g-z9-c3t">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cqW-ib-hzW">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2J-Jj-ggt">
+                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcP-oh-s9w">
+                                            <rect key="frame" x="8" y="29" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14L-pH-sPB">
+                                            <rect key="frame" x="8" y="50" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="FcP-oh-s9w" firstAttribute="centerY" secondItem="95g-z9-c3t" secondAttribute="centerY" id="6LK-mv-zKK"/>
+                                        <constraint firstItem="FcP-oh-s9w" firstAttribute="trailing" secondItem="14L-pH-sPB" secondAttribute="trailing" id="A4T-JV-ETx"/>
+                                        <constraint firstItem="FcP-oh-s9w" firstAttribute="leading" secondItem="S2J-Jj-ggt" secondAttribute="leading" id="FmB-Rr-9zj"/>
+                                        <constraint firstItem="14L-pH-sPB" firstAttribute="leading" secondItem="FcP-oh-s9w" secondAttribute="leading" id="KfF-06-O0t"/>
+                                        <constraint firstItem="S2J-Jj-ggt" firstAttribute="trailing" secondItem="FcP-oh-s9w" secondAttribute="trailing" id="Saf-ju-SvG"/>
+                                        <constraint firstItem="S2J-Jj-ggt" firstAttribute="top" secondItem="95g-z9-c3t" secondAttribute="topMargin" id="bci-d5-QYZ"/>
+                                        <constraint firstItem="14L-pH-sPB" firstAttribute="trailing" secondItem="95g-z9-c3t" secondAttribute="trailingMargin" id="k3f-mp-E32"/>
+                                        <constraint firstItem="FcP-oh-s9w" firstAttribute="leading" secondItem="95g-z9-c3t" secondAttribute="leadingMargin" id="pET-4U-heQ"/>
+                                        <constraint firstItem="14L-pH-sPB" firstAttribute="bottom" secondItem="95g-z9-c3t" secondAttribute="bottomMargin" id="taK-nP-Dgx"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityTitleLabel" destination="FcP-oh-s9w" id="wQW-fs-H82"/>
+                                    <outlet property="countryTitleLabel" destination="14L-pH-sPB" id="ALZ-O0-N19"/>
+                                    <outlet property="stationTitleLabel" destination="S2J-Jj-ggt" id="MtJ-qN-zSI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -381,6 +412,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zhi-oq-AiG"/>
+        <segue reference="oXy-8j-osy"/>
     </inferredMetricsTieBreakers>
 </document>

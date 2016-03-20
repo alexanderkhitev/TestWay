@@ -15,6 +15,7 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     // MARK: - var and let
     var dataManager: DataManager!
     private var selectedDepartureFetchedController: NSFetchedResultsController!
+    private var selectedHostFetchedController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext {
         return appDelegate.managedObjectContext
@@ -24,6 +25,7 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     // MARK: - IBOutlet
     
     @IBOutlet weak var departureStationOutlet: UITableViewCell!
+    @IBOutlet weak var hostStationOutlet: UITableViewCell!
     
     // MARK: - Lifecycle
 
@@ -134,10 +136,35 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
         } else {
             departureStationOutlet.textLabel?.text = "Откуда?"
         }
+        
+        // host
+        selectedHostFetchedController = NSFetchedResultsController(fetchRequest: hostFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        selectedHostFetchedController.delegate = self
+        do {
+            try selectedHostFetchedController.performFetch()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+        
+        guard let hostStation = selectedHostFetchedController.fetchedObjects?.first as? SelectedHostStation else {
+            hostStationOutlet.textLabel?.text = "Куда?"
+            return
+        }
+        
+        guard let hostStationTitle = hostStation.stationTitle else { return }
+        hostStationOutlet.textLabel?.text = hostStationTitle
+        
     }
     
     private func departureFetchRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "SelectedDepartureStation")
+        let sortDescriptor = NSSortDescriptor(key: "stationTitle", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
+    private func hostFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "SelectedHostStation")
         let sortDescriptor = NSSortDescriptor(key: "stationTitle", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest

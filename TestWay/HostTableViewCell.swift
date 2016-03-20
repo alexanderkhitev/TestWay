@@ -11,6 +11,10 @@ import UIKit
 class HostTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlet
+    @IBOutlet weak var stationTitleLabel: UILabel!
+    @IBOutlet weak var countryTitleLabel: UILabel!
+    @IBOutlet weak var cityTitleLabel: UILabel!
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
