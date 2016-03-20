@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		196A9F163DEA5061BA954809 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89C0163791F8EBC8199CA45 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A63AA6181C9EBE3C00019617 /* CoreDataUtilits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA6171C9EBE3C00019617 /* CoreDataUtilits.swift */; };
 		A63AA61E1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA61A1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift */; };
 		A63AA61F1C9EBF3400019617 /* SelectedDepartureStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA61B1C9EBF3400019617 /* SelectedDepartureStation.swift */; };
 		A63AA6201C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63AA61C1C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift */; };
@@ -59,7 +58,6 @@
 /* Begin PBXFileReference section */
 		47F55270C995DBAF9BB94C10 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		70864F2DF855BF8D6AD3B7DD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A63AA6171C9EBE3C00019617 /* CoreDataUtilits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUtilits.swift; sourceTree = "<group>"; };
 		A63AA61A1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectedDepartureStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A63AA61B1C9EBF3400019617 /* SelectedDepartureStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDepartureStation.swift; sourceTree = "<group>"; };
 		A63AA61C1C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectedDepartureStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 			children = (
 				A65862191C9C73AB009F1CAB /* DataManager.swift */,
 				A6AE14591C9EA31200070C5E /* UIUtilits.swift */,
-				A63AA6171C9EBE3C00019617 /* CoreDataUtilits.swift */,
 			);
 			name = Workers;
 			sourceTree = "<group>";
@@ -470,7 +467,6 @@
 				A68C0D941C9E9D5100504CBA /* StationInfoViewController.swift in Sources */,
 				A6900B8C1C9D8A480014D380 /* HostTableViewCell.swift in Sources */,
 				A6F815871C9D6F77002D84F7 /* HostStationPoint.swift in Sources */,
-				A63AA6181C9EBE3C00019617 /* CoreDataUtilits.swift in Sources */,
 				A6F8158A1C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift in Sources */,
 				A658625A1C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift in Sources */,
 				A6900B881C9D7FA20014D380 /* HostTableViewController.swift in Sources */,

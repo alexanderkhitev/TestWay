@@ -15,6 +15,10 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     // MARK: - var and let
     private var departureFetchedResultController: NSFetchedResultsController!
     var station: DepartureStation!
+    private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    private var managedObjectContext: NSManagedObjectContext {
+        return appDelegate.managedObjectContext
+    }
     
     // MARK: - IBOutlet
     @IBOutlet weak var stationTitleLabel: UILabel!
@@ -71,22 +75,24 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
 //        @NSManaged var stationId: NSNumber?  ///
 //        @NSManaged var stationTitle: String? ///
 //        @NSManaged var point: SelectedDepartureStationPoint?
-        CoreDataUtilits.selectedDepartureStation.cityId = station.cityId
-        CoreDataUtilits.selectedDepartureStation.cityTitle = station.cityTitle
-        CoreDataUtilits.selectedDepartureStation.countryTitle = station.countryTitle
-        CoreDataUtilits.selectedDepartureStation.districtTitle = station.districtTitle
-        CoreDataUtilits.selectedDepartureStation.regionTitle = station.regionTitle
-        CoreDataUtilits.selectedDepartureStation.stationId = station.stationId
-        CoreDataUtilits.selectedDepartureStation.stationTitle = station.stationTitle
+        let selectedDepartureStation = NSEntityDescription.insertNewObjectForEntityForName("SelectedDepartureStation", inManagedObjectContext: managedObjectContext) as! SelectedDepartureStation
+        let selectedDepartureStationPoint = NSEntityDescription.insertNewObjectForEntityForName("SelectedDepartureStationPoint", inManagedObjectContext: managedObjectContext) as! SelectedDepartureStationPoint
+        selectedDepartureStation.cityId = station.cityId
+        selectedDepartureStation.cityTitle = station.cityTitle
+        selectedDepartureStation.countryTitle = station.countryTitle
+        selectedDepartureStation.districtTitle = station.districtTitle
+        selectedDepartureStation.regionTitle = station.regionTitle
+        selectedDepartureStation.stationId = station.stationId
+        selectedDepartureStation.stationTitle = station.stationTitle
     
-        CoreDataUtilits.selectedDepartureStationPoint.latitude = station.point?.latitude
-        CoreDataUtilits.selectedDepartureStationPoint.longitude = station.point?.longitude
+        selectedDepartureStationPoint.latitude = station.point?.latitude
+        selectedDepartureStationPoint.longitude = station.point?.longitude
         
-        CoreDataUtilits.selectedDepartureStation.point = CoreDataUtilits.selectedDepartureStationPoint
+        selectedDepartureStation.point = selectedDepartureStationPoint
         
-        print(CoreDataUtilits.selectedDepartureStation.point?.latitude, CoreDataUtilits.selectedDepartureStation.point?.longitude)
+        print(selectedDepartureStation.point?.latitude, selectedDepartureStation.point?.longitude)
         do {
-            try CoreDataUtilits.managedObjectContext.save()
+            try managedObjectContext.save()
             navigationController?.popToRootViewControllerAnimated(true)
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
@@ -99,7 +105,7 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     }
 
     private func removeFirstStation() {
-        departureFetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: CoreDataUtilits.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        departureFetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         departureFetchedResultController.delegate = self
         do {
             try departureFetchedResultController.performFetch()
@@ -108,9 +114,9 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
         }
         guard let selectedStation = departureFetchedResultController.fetchedObjects?.first as? SelectedDepartureStation else { return }
         print(selectedStation.stationTitle, selectedStation.cityTitle, selectedStation.point?.longitude)
-        CoreDataUtilits.managedObjectContext.deleteObject(selectedStation as NSManagedObject)
+        managedObjectContext.deleteObject(selectedStation as NSManagedObject)
         do {
-            try CoreDataUtilits.managedObjectContext.save()
+            try managedObjectContext.save()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }

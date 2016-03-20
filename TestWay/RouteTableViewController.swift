@@ -15,6 +15,10 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     // MARK: - var and let
     var dataManager: DataManager!
     private var departureFetchedController: NSFetchedResultsController!
+    private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    private var managedObjectContext: NSManagedObjectContext {
+        return appDelegate.managedObjectContext
+    }
     
     // MARK: - Lifecycle
 
@@ -110,7 +114,7 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     }
     
     private func setFetchedResultsControllers() {
-        departureFetchedController = NSFetchedResultsController(fetchRequest: departureFetchRequest(), managedObjectContext: CoreDataUtilits.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        departureFetchedController = NSFetchedResultsController(fetchRequest: departureFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         departureFetchedController.delegate = self
         do {
             try departureFetchedController.performFetch()

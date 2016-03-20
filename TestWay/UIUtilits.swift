@@ -11,5 +11,6 @@ import Foundation
 
 public class UIUtilits {
     
+    // MARK: - var and let
     static let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
 }
