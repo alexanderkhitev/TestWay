@@ -152,7 +152,6 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         }
         print("numberOfcityStations", numberOfcityStations)
         //
-
         stationFetchedResultController = NSFetchedResultsController(fetchRequest: stationFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         stationFetchedResultController.delegate = self
         do {
@@ -208,21 +207,6 @@ extension DepartureTableViewController {
 
     }
     
-    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-//        let infoController = UIUtilits.mainStoryboard.instantiateViewControllerWithIdentifier("StationInfoViewController") as! StationInfoViewController
-//        if !searchController.active {
-//            guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
-//            let currentStation = stations[indexPath.row]
-//            print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
-//            infoController.station = currentStation
-//        } else {
-//            guard let currentStation = searchResults?[indexPath.row] else { return }
-//            print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
-//            infoController.station = currentStation
-//        }
-//        showViewController(infoController, sender: self)
-    }
-    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
     }
@@ -262,12 +246,12 @@ extension DepartureTableViewController: UISearchControllerDelegate, UISearchBarD
     }
     
     func didDismissSearchController(searchController: UISearchController) {
+        searchPredicate = nil
         searchResults?.removeAll()
         tableView.reloadData()
     }
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        print("selectedScopeButtonIndexDidChange")
         updateSearchResultsForSearchController(searchController)
     }
 }

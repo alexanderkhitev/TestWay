@@ -87,7 +87,6 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
         print(CoreDataUtilits.selectedDepartureStation.point?.latitude, CoreDataUtilits.selectedDepartureStation.point?.longitude)
         do {
             try CoreDataUtilits.managedObjectContext.save()
-            print("saved core data")
             navigationController?.popToRootViewControllerAnimated(true)
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
