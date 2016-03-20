@@ -11,7 +11,7 @@ import UIKit
 class DepartureTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlet
-    @IBOutlet weak var stationTitleLabel: UILabel!
+    @IBOutlet weak var stationTitleLabel: UILabel! 
     @IBOutlet weak var countryTitleLabel: UILabel!
     @IBOutlet weak var cityTitleLabel: UILabel!
 

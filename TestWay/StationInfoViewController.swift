@@ -59,6 +59,11 @@ class StationInfoViewController: UIViewController {
         countryTitleLabel.text = "Страна: \(countryTitle)"
         countryTitleLabel.adjustsFontSizeToFitWidth = true
     }
+    
+    // MARK: - IBAction
+    @IBAction func selectStation(sender: UIButton) {
+        
+    }
 
     /*
     // MARK: - Navigation

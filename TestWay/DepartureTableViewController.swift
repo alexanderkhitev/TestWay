@@ -27,7 +27,8 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     // MARK: - Lifycycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setSearchController()
+        setFetchedResultController()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -39,9 +40,6 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
         super.viewWillAppear(true)
         self.definesPresentationContext = true
         setSetting()
-        setSearchController()
-        setFetchedResultController()
-        print("DepartureTableViewController")
     }
     
     override func didReceiveMemoryWarning() {
@@ -199,17 +197,6 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
 extension DepartureTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if !searchController.active {
-            guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
-            let station = stations[indexPath.row]
-            print(station.stationTitle, station.countryTitle, station.cityTitle)
-        } else {
-            guard let station = searchResults?[indexPath.row] else { return }
-            print(station.stationTitle, station.countryTitle, station.cityTitle)
-        }
-    }
-    
-    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         let infoController = UIUtilits.mainStoryboard.instantiateViewControllerWithIdentifier("StationInfoViewController") as! StationInfoViewController
         if !searchController.active {
             guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
@@ -222,7 +209,22 @@ extension DepartureTableViewController {
             infoController.station = currentStation
         }
         showViewController(infoController, sender: self)
-        searchResults?.removeAll()
+
+    }
+    
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+//        let infoController = UIUtilits.mainStoryboard.instantiateViewControllerWithIdentifier("StationInfoViewController") as! StationInfoViewController
+//        if !searchController.active {
+//            guard let stations = Array(cities[indexPath.section].stations!) as? [DepartureStation] else { return }
+//            let currentStation = stations[indexPath.row]
+//            print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
+//            infoController.station = currentStation
+//        } else {
+//            guard let currentStation = searchResults?[indexPath.row] else { return }
+//            print(currentStation.stationTitle, currentStation.cityTitle, currentStation.countryTitle)
+//            infoController.station = currentStation
+//        }
+//        showViewController(infoController, sender: self)
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
@@ -252,15 +254,11 @@ extension DepartureTableViewController: UISearchControllerDelegate, UISearchBarD
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         searchResults?.removeAll()
         guard let searchText = searchController.searchBar.text else { return }
-        searchPredicate = NSPredicate(format: "stationTitle contains [cd] %@ OR cityTitle contains [c] %@", searchText, searchText)
+        searchPredicate = NSPredicate(format: "stationTitle contains [cd] %@ OR cityTitle contains [cd] %@", searchText, searchText)
         searchResults = stationFetchedResultController.fetchedObjects?.filter() {
             return searchPredicate.evaluateWithObject($0)
         } as? [DepartureStation]
-        print(searchResults?.count)
         tableView.reloadData()
-        for st in searchResults! {
-            print(st.stationTitle, st.cityTitle)
-        }
     }
     
     func didPresentSearchController(searchController: UISearchController) {
