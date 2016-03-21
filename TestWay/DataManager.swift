@@ -24,7 +24,7 @@ public class DataManager {
             progress.mode = .Indeterminate
             progress.removeFromSuperViewOnHide = true
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                // здесь сделал, сохранение данных один раз при первом запуске, так как знаю, что эти данные сейчас не будут изменяться
+                // здесь сделал, сохранение данных один раз при первом запуске, так как знаю, что эти данные сейчас не будут изменяться. зделал, чтобы всегда при загрузке приложения появлялся MBProgressHUD, так как понимаю, что в настоящем приложение данные получали бы с сервера и поэтому сделал для видимости обновление.
                 let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch")
                 if firstLaunch == false {
                     self.save()

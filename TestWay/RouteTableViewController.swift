@@ -120,6 +120,8 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
                 return
             }
             routeDateCell.dateLabel.text = transformDate(date)
+        } else {
+            routeDateCell.dateLabel.text = "Дата отправления"
         }
     }
     
