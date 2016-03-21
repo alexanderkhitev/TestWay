@@ -62,6 +62,9 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <relationship name="station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HostStation" inverseName="point" inverseEntity="HostStation" syncable="YES"/>
     </entity>
+    <entity name="SelectedDate" representedClassName="SelectedDate" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
     <entity name="SelectedDepartureStation" representedClassName="SelectedDepartureStation" syncable="YES">
         <attribute name="cityId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="cityTitle" optional="YES" attributeType="String" syncable="YES"/>
@@ -105,5 +108,6 @@
         <element name="SelectedDepartureStationPoint" positionX="-270" positionY="279" width="128" height="90"/>
         <element name="SelectedHostStation" positionX="-288" positionY="-306" width="128" height="163"/>
         <element name="SelectedHostStationPoint" positionX="-297" positionY="-79" width="128" height="88"/>
+        <element name="SelectedDate" positionX="-450" positionY="-198" width="128" height="58"/>
     </elements>
 </model>

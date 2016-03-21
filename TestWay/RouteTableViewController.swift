@@ -53,7 +53,7 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
         case NSIndexPath(forRow: 0, inSection: 1):
             performSegueWithIdentifier("showHostTVC", sender: self)
         case NSIndexPath(forRow: 0, inSection: 2):
-            break
+            performSegueWithIdentifier("showDateSelector", sender: self)
         default: break
         }
     }

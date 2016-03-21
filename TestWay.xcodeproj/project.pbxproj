@@ -41,6 +41,9 @@
 		A6900B8A1C9D8A1A0014D380 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B891C9D8A1A0014D380 /* DepartureTableViewCell.swift */; };
 		A6900B8C1C9D8A480014D380 /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6900B8B1C9D8A480014D380 /* HostTableViewCell.swift */; };
 		A6AE145A1C9EA31200070C5E /* UIUtilits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE14591C9EA31200070C5E /* UIUtilits.swift */; };
+		A6AF51311C9F8BFF005DD54B /* DateSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF51301C9F8BFF005DD54B /* DateSelectorViewController.swift */; };
+		A6AF51351C9F9496005DD54B /* SelectedDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF51331C9F9496005DD54B /* SelectedDate+CoreDataProperties.swift */; };
+		A6AF51361C9F9496005DD54B /* SelectedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF51341C9F9496005DD54B /* SelectedDate.swift */; };
 		A6F815841C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */; };
 		A6F815851C9D6F77002D84F7 /* HostPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */; };
 		A6F815861C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */; };
@@ -101,6 +104,9 @@
 		A6900B891C9D8A1A0014D380 /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		A6900B8B1C9D8A480014D380 /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewCell.swift; sourceTree = "<group>"; };
 		A6AE14591C9EA31200070C5E /* UIUtilits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtilits.swift; sourceTree = "<group>"; };
+		A6AF51301C9F8BFF005DD54B /* DateSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSelectorViewController.swift; sourceTree = "<group>"; };
+		A6AF51331C9F9496005DD54B /* SelectedDate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectedDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A6AF51341C9F9496005DD54B /* SelectedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDate.swift; sourceTree = "<group>"; };
 		A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostPoint.swift; sourceTree = "<group>"; };
 		A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 				A65862641C9C97C7009F1CAB /* DepartureTableViewController.swift */,
 				A6900B871C9D7FA20014D380 /* HostTableViewController.swift */,
 				A68C0D931C9E9D5100504CBA /* StationInfoViewController.swift */,
+				A6AF51301C9F8BFF005DD54B /* DateSelectorViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -238,6 +245,7 @@
 		A65862181C9C7372009F1CAB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A6AF51321C9F947C005DD54B /* SelectedDate */,
 				A6F8157A1C9D6F1F002D84F7 /* DepartureData */,
 				A6F8157B1C9D6F33002D84F7 /* HostData */,
 				A65861F61C9C69D6009F1CAB /* TestWay.xcdatamodeld */,
@@ -262,6 +270,15 @@
 				A67C19921C9F20590004BC56 /* RouteDepartureTableViewCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		A6AF51321C9F947C005DD54B /* SelectedDate */ = {
+			isa = PBXGroup;
+			children = (
+				A6AF51331C9F9496005DD54B /* SelectedDate+CoreDataProperties.swift */,
+				A6AF51341C9F9496005DD54B /* SelectedDate.swift */,
+			);
+			name = SelectedDate;
 			sourceTree = "<group>";
 		};
 		A6F8157A1C9D6F1F002D84F7 /* DepartureData */ = {
@@ -466,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AF51351C9F9496005DD54B /* SelectedDate+CoreDataProperties.swift in Sources */,
 				A6AE145A1C9EA31200070C5E /* UIUtilits.swift in Sources */,
 				A63AA61F1C9EBF3400019617 /* SelectedDepartureStation.swift in Sources */,
 				A658625F1C9C8B58009F1CAB /* DeparturePoint.swift in Sources */,
@@ -491,12 +509,14 @@
 				A658625C1C9C8B58009F1CAB /* DepartureStation+CoreDataProperties.swift in Sources */,
 				A6F8158B1C9D6F77002D84F7 /* HostCity.swift in Sources */,
 				A63AA61E1C9EBF3400019617 /* SelectedDepartureStation+CoreDataProperties.swift in Sources */,
+				A6AF51311C9F8BFF005DD54B /* DateSelectorViewController.swift in Sources */,
 				A65862621C9C9451009F1CAB /* DepartureStationPoint+CoreDataProperties.swift in Sources */,
 				A65862651C9C97C7009F1CAB /* DepartureTableViewController.swift in Sources */,
 				A63AA6271C9F0FC900019617 /* SelectedHostStationPoint+CoreDataProperties.swift in Sources */,
 				A68C0D941C9E9D5100504CBA /* StationInfoViewController.swift in Sources */,
 				A6900B8C1C9D8A480014D380 /* HostTableViewCell.swift in Sources */,
 				A6F815871C9D6F77002D84F7 /* HostStationPoint.swift in Sources */,
+				A6AF51361C9F9496005DD54B /* SelectedDate.swift in Sources */,
 				A6F8158A1C9D6F77002D84F7 /* HostCity+CoreDataProperties.swift in Sources */,
 				A67C19911C9F204C0004BC56 /* RouteHostTableViewCell.swift in Sources */,
 				A658625A1C9C8B58009F1CAB /* DepartureCity+CoreDataProperties.swift in Sources */,

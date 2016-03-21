@@ -115,6 +115,7 @@
                         <outlet property="routeHostCell" destination="LtR-re-wfy" id="zAP-Ay-InL"/>
                         <segue destination="LO3-Ui-Ywy" kind="show" identifier="showDepartureTVC" id="Ndh-2K-1E1"/>
                         <segue destination="CnD-kn-PSH" kind="show" identifier="showHostTVC" id="3hL-4R-ZIV"/>
+                        <segue destination="wpW-CF-TWQ" kind="show" identifier="showDateSelector" id="Z52-V4-Ugw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXB-Iz-vtM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -187,6 +188,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ib7-xk-edP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2448" y="-388"/>
+        </scene>
+        <!--Date Selector View Controller-->
+        <scene sceneID="n7K-78-E7V">
+            <objects>
+                <viewController storyboardIdentifier="DateSelectorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wpW-CF-TWQ" customClass="DateSelectorViewController" customModule="TestWay" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="abh-P4-7gK"/>
+                        <viewControllerLayoutGuide type="bottom" id="LZs-wn-E0F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RST-zM-SSn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LVe-m2-ZrM">
+                                <rect key="frame" x="0.0" y="64" width="600" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="480217495.14355803">
+                                    <!--2016-03-21 01:44:55 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tzn-ID-UwY">
+                                <rect key="frame" x="193" y="288" width="215" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="rL0-pE-vpz"/>
+                                    <constraint firstAttribute="width" constant="215" id="xsz-An-fvF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Выбрать дату"/>
+                                <connections>
+                                    <action selector="selectCurrentDate:" destination="wpW-CF-TWQ" eventType="touchUpInside" id="LNH-N8-YSy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tzn-ID-UwY" firstAttribute="centerX" secondItem="LVe-m2-ZrM" secondAttribute="centerX" id="Ewc-VN-3Q1"/>
+                            <constraint firstItem="Tzn-ID-UwY" firstAttribute="top" secondItem="LVe-m2-ZrM" secondAttribute="bottom" constant="8" symbolic="YES" id="F1H-VP-6uw"/>
+                            <constraint firstItem="LVe-m2-ZrM" firstAttribute="top" secondItem="abh-P4-7gK" secondAttribute="bottom" id="Mdz-jz-1io"/>
+                            <constraint firstItem="LVe-m2-ZrM" firstAttribute="leading" secondItem="RST-zM-SSn" secondAttribute="leading" id="sZF-Fo-MI5"/>
+                            <constraint firstAttribute="trailing" secondItem="LVe-m2-ZrM" secondAttribute="trailing" id="wNV-Qw-bWr"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="datePicker" destination="LVe-m2-ZrM" id="6ic-he-ikK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LqC-jJ-Hp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1727" y="544"/>
         </scene>
         <!--Station Info View Controller-->
         <scene sceneID="29L-VF-gzo">
