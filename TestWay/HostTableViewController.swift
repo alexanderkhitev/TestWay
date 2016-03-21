@@ -14,8 +14,6 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     
     // MARK: - var and let
     private var fetchedResultController: NSFetchedResultsController!
-    // сделанно два NSFetchedResultsController, так как они выполняют разную функцию, можно было бы реализовать используя лишь один NSFetchedResultsController, но это задел на будушие, так как например можно в функции setFetchedResultController извлечь еще какие либо данные с помощью fetchedResultController, но станции должны быть обязательно для поиска в UISearchController
-    private var stationFetchedResultController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext! {
         return appDelegate.managedObjectContext
@@ -116,11 +114,13 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
             numberOfcityStations += (city.stations?.count)!
         }
         print("numberOfcityStations", numberOfcityStations)
-        //
-        stationFetchedResultController = NSFetchedResultsController(fetchRequest: stationFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        stationFetchedResultController.delegate = self
+    }
+    
+    private func fetchStations() {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: stationFetchResult(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
         do {
-            try stationFetchedResultController.performFetch()
+            try fetchedResultController.performFetch()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
@@ -186,10 +186,11 @@ extension HostTableViewController: UISearchControllerDelegate, UISearchBarDelega
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+        fetchStations()
         searchResults?.removeAll()
         guard let searchText = searchController.searchBar.text else { return }
         searchPredicate = NSPredicate(format: "stationTitle contains [cd] %@ OR cityTitle contains [cd] %@", searchText, searchText)
-        searchResults = stationFetchedResultController.fetchedObjects?.filter() {
+        searchResults = fetchedResultController.fetchedObjects?.filter() {
             return searchPredicate.evaluateWithObject($0)
             } as? [HostStation]
         tableView.reloadData()
