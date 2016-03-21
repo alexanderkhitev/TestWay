@@ -44,6 +44,7 @@
 		A6AF51311C9F8BFF005DD54B /* DateSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF51301C9F8BFF005DD54B /* DateSelectorViewController.swift */; };
 		A6AF51351C9F9496005DD54B /* SelectedDate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF51331C9F9496005DD54B /* SelectedDate+CoreDataProperties.swift */; };
 		A6AF51361C9F9496005DD54B /* SelectedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF51341C9F9496005DD54B /* SelectedDate.swift */; };
+		A6AF51381C9F9882005DD54B /* RouteDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF51371C9F9882005DD54B /* RouteDateTableViewCell.swift */; };
 		A6F815841C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */; };
 		A6F815851C9D6F77002D84F7 /* HostPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */; };
 		A6F815861C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */; };
@@ -107,6 +108,7 @@
 		A6AF51301C9F8BFF005DD54B /* DateSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSelectorViewController.swift; sourceTree = "<group>"; };
 		A6AF51331C9F9496005DD54B /* SelectedDate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectedDate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6AF51341C9F9496005DD54B /* SelectedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDate.swift; sourceTree = "<group>"; };
+		A6AF51371C9F9882005DD54B /* RouteDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDateTableViewCell.swift; sourceTree = "<group>"; };
 		A6F8157C1C9D6F77002D84F7 /* HostPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6F8157D1C9D6F77002D84F7 /* HostPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostPoint.swift; sourceTree = "<group>"; };
 		A6F8157E1C9D6F77002D84F7 /* HostStationPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HostStationPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				A6900B8B1C9D8A480014D380 /* HostTableViewCell.swift */,
 				A67C19901C9F204C0004BC56 /* RouteHostTableViewCell.swift */,
 				A67C19921C9F20590004BC56 /* RouteDepartureTableViewCell.swift */,
+				A6AF51371C9F9882005DD54B /* RouteDateTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				A658625B1C9C8B58009F1CAB /* DepartureCity.swift in Sources */,
 				A6F815851C9D6F77002D84F7 /* HostPoint.swift in Sources */,
 				A6F815891C9D6F77002D84F7 /* HostStation.swift in Sources */,
+				A6AF51381C9F9882005DD54B /* RouteDateTableViewCell.swift in Sources */,
 				A63AA6281C9F0FC900019617 /* SelectedHostStationPoint.swift in Sources */,
 				A65862631C9C9451009F1CAB /* DepartureStationPoint.swift in Sources */,
 				A63AA6201C9EBF3400019617 /* SelectedDepartureStationPoint+CoreDataProperties.swift in Sources */,

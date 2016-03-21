@@ -79,15 +79,18 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Время" id="OoQ-s5-JkK">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0Kp-3R-IA3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0Kp-3R-IA3" customClass="RouteDateTableViewCell" customModule="TestWay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="240" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Kp-3R-IA3" id="oqL-QE-laH">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата отправления" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boH-0M-Oqh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boH-0M-Oqh">
                                                     <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="T1c-nv-927"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -99,6 +102,9 @@
                                                 <constraint firstItem="boH-0M-Oqh" firstAttribute="trailing" secondItem="oqL-QE-laH" secondAttribute="trailingMargin" id="w5o-fF-a5T"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="boH-0M-Oqh" id="tfG-gQ-ZsP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -111,6 +117,7 @@
                     <navigationItem key="navigationItem" id="lmf-7S-xYS"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="routeDateCell" destination="0Kp-3R-IA3" id="WZP-19-3hY"/>
                         <outlet property="routeDepartureCell" destination="wke-6b-bZj" id="Rc2-bl-Gi9"/>
                         <outlet property="routeHostCell" destination="LtR-re-wfy" id="zAP-Ay-InL"/>
                         <segue destination="LO3-Ui-Ywy" kind="show" identifier="showDepartureTVC" id="Ndh-2K-1E1"/>

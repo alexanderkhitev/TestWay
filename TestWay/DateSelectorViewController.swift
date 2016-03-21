@@ -50,10 +50,17 @@ class DateSelectorViewController: UIViewController, NSFetchedResultsControllerDe
         selectedDateEntity.date = datePicker.date
         do {
             try managedObjectContext.save()
+            navigationController?.popToRootViewControllerAnimated(true)
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
+            let alertController = UIAlertController(title: nil, message: "Произошла ошибка во время сохранения", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) -> Void in
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }))
+            presentViewController(alertController, animated: true, completion: nil)
         }
     }
+    
     // MARK: - functions
     
     private func setUISetting() {
@@ -84,15 +91,4 @@ class DateSelectorViewController: UIViewController, NSFetchedResultsControllerDe
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
