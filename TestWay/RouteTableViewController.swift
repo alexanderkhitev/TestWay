@@ -73,15 +73,16 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
         } catch let error as NSError {
             print(error.localizedDescription, error.localizedDescription)
         }
-        guard let departureStation = selectedDepartureFetchedController.fetchedObjects?.first as? SelectedDepartureStation else {
-            routeDepartureCell.stationTitleLabel?.text = "Откуда?"
-            return
+        
+        if let departureStation = selectedDepartureFetchedController.fetchedObjects?.first as? SelectedDepartureStation {
+            guard let stationTitle = departureStation.stationTitle else {
+                routeDepartureCell.stationTitleLabel.text = "Откуда?"
+                return
+            }
+            routeDepartureCell.stationTitleLabel.text = stationTitle
+        } else {
+            routeDepartureCell.stationTitleLabel.text = "Откуда?"
         }
-        guard let departureStationTitle = departureStation.stationTitle else {
-            routeDepartureCell.stationTitleLabel?.text = "Откуда?"
-            return
-        }
-        routeDepartureCell.stationTitleLabel?.text = departureStationTitle
         
         // host
         selectedHostFetchedController = NSFetchedResultsController(fetchRequest: hostFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
