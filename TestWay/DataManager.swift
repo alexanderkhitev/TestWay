@@ -17,12 +17,14 @@ public class DataManager {
     private let bundle = NSBundle.mainBundle()
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
+    // здесь передаю view как параметер, для использование с MBProgressHUD
     public func saveData(view: UIView?) {
         if let _view = view {
             let progress = MBProgressHUD.showHUDAddedTo(_view, animated: true)
             progress.mode = .Indeterminate
             progress.removeFromSuperViewOnHide = true
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                // здесь сделал, сохранение данных один раз при первом запуске, так как знаю, что эти данные сейчас не будут изменяться
                 let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch")
                 if firstLaunch == false {
                     self.save()
@@ -34,18 +36,15 @@ public class DataManager {
             })
         }
     }
-    
+    // эта функция извлекает данные из файла и сохраняет их в CoreData
     private func save() {
         guard let jsonPath = bundle.pathForResource("allStations", ofType: "json") else { return }
         guard let jsonData = NSData(contentsOfFile: jsonPath) else { return }
         let managedObjectContext = appDelegate.managedObjectContext
-
         
         let json = try! NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments) as! [String : AnyObject]
         
         if let departureCities = json["citiesFrom"] as? [[String: AnyObject]] {
-            //var checkDigit = 0
-            //var checkStationDigit = 0
             for city in departureCities {
                 let departureCityEntity = entity("DepartureCity", managedObjectContext: managedObjectContext) as! DepartureCity
                 let departureCityPointEntity = entity("DeparturePoint", managedObjectContext: managedObjectContext) as! DeparturePoint
@@ -69,11 +68,7 @@ public class DataManager {
                 departureCityPointEntity.latitude = latitude
                 departureCityPointEntity.longitude = longitude
                 departureCityEntity.point = departureCityPointEntity
-                
-                // check 
-                //checkDigit += 1
-                //print("city", checkDigit)
-
+           
                 for station in stations {
                     let departureStationEntity = entity("DepartureStation", managedObjectContext: managedObjectContext) as! DepartureStation
                     let departureStationPointEntity = entity("DepartureStationPoint", managedObjectContext: managedObjectContext) as! DepartureStationPoint
@@ -108,20 +103,15 @@ public class DataManager {
                     do {
                         try managedObjectContext.save()
                     } catch let error as NSError {
-                        print("error when save", error.localizedDescription, error.userInfo)
+                        print(error.localizedDescription, error.userInfo)
                     }
-                    
-                    //checkStationDigit += 1
                 }
-                //print("checkStationDigit \(checkStationDigit)")
             }
         } else {
             print("there is an error in departureCity")
         }
         
         if let hostCities = json["citiesTo"] as? [[String : AnyObject]] {
-//            var checkDigit = 0
-//            var checkStationDigit = 0
             for city in hostCities {
                 let departureCityEntity = entity("HostCity", managedObjectContext: managedObjectContext) as! HostCity
                 let departureCityPointEntity = entity("HostPoint", managedObjectContext: managedObjectContext) as! HostPoint
@@ -145,10 +135,6 @@ public class DataManager {
                 departureCityPointEntity.latitude = latitude
                 departureCityPointEntity.longitude = longitude
                 departureCityEntity.point = departureCityPointEntity
-                
-                // check
-               // checkDigit += 1
-                //print("host city", checkDigit)
                 
                 for station in stations {
                     let departureStationEntity = entity("HostStation", managedObjectContext: managedObjectContext) as! HostStation
@@ -184,12 +170,9 @@ public class DataManager {
                     do {
                         try managedObjectContext.save()
                     } catch let error as NSError {
-                        print("error when save", error.localizedDescription, error.userInfo)
+                        print(error.localizedDescription, error.userInfo)
                     }
-                    
-//                    checkStationDigit += 1
                 }
-//                print("host checkStationDigit \(checkStationDigit)")
             }
         } else {
             print("there is an error in host city")

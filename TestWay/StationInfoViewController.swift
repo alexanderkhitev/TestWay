@@ -13,8 +13,7 @@ import CoreData
 class StationInfoViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     // MARK: - var and let
-    private var departureFetchedResultController: NSFetchedResultsController!
-    private var hostFetchedResultController: NSFetchedResultsController!
+    private var fetchedResultController: NSFetchedResultsController!
     var departureStation: DepartureStation!
     var hostStation: HostStation!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -124,15 +123,15 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     }
 
     private func removeDepartureStation() {
-        departureFetchedResultController = NSFetchedResultsController(fetchRequest: fetchDepartureRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        departureFetchedResultController.delegate = self
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchDepartureRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
         do {
-            try departureFetchedResultController.performFetch()
+            try fetchedResultController.performFetch()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
-        guard let selectedStation = departureFetchedResultController.fetchedObjects?.first as? SelectedDepartureStation else { return }
-        print(departureFetchedResultController.fetchedObjects?.count)
+        guard let selectedStation = fetchedResultController.fetchedObjects?.first as? SelectedDepartureStation else { return }
+        print(fetchedResultController.fetchedObjects?.count)
         managedObjectContext.deleteObject(selectedStation as NSManagedObject)
         do {
             try managedObjectContext.save()
@@ -180,15 +179,15 @@ class StationInfoViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     private func removeHostStation() {
-        hostFetchedResultController = NSFetchedResultsController(fetchRequest: fetchHostRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        hostFetchedResultController.delegate = self
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchHostRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
 
         do {
-            try hostFetchedResultController.performFetch()
+            try fetchedResultController.performFetch()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
-        guard let selectedStation = hostFetchedResultController.fetchedObjects?.first as? SelectedHostStation else { return }
+        guard let selectedStation = fetchedResultController.fetchedObjects?.first as? SelectedHostStation else { return }
         managedObjectContext.deleteObject(selectedStation as NSManagedObject)
         do {
             try managedObjectContext.save()

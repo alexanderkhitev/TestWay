@@ -14,9 +14,7 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     
     // MARK: - var and let
     var dataManager: DataManager!
-    private var selectedDepartureFetchedController: NSFetchedResultsController!
-    private var selectedHostFetchedController: NSFetchedResultsController!
-    private var selectedDateFetchedController: NSFetchedResultsController!
+    private var selectedFetchedController: NSFetchedResultsController!
     
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext {
@@ -40,8 +38,8 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        setSetting()
-        setFetchedResultsControllers()
+        setUISetting()
+        updateData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,22 +60,22 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
     }
     
     // MARK: - UI functions
-    private func setSetting() {
+    private func setUISetting() {
         navigationController?.navigationBarHidden = true
         tabBarController?.tabBar.hidden = false
     }
     
     // MARK: - getting data of selected stations
-    private func setFetchedResultsControllers() {
-        selectedDepartureFetchedController = NSFetchedResultsController(fetchRequest: departureFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        selectedDepartureFetchedController.delegate = self
+    private func updateData() {
+        selectedFetchedController = NSFetchedResultsController(fetchRequest: departureFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        selectedFetchedController.delegate = self
         do {
-            try selectedDepartureFetchedController.performFetch()
+            try selectedFetchedController.performFetch()
         } catch let error as NSError {
             print(error.localizedDescription, error.localizedDescription)
         }
         
-        if let departureStation = selectedDepartureFetchedController.fetchedObjects?.first as? SelectedDepartureStation {
+        if let departureStation = selectedFetchedController.fetchedObjects?.first as? SelectedDepartureStation {
             guard let stationTitle = departureStation.stationTitle else {
                 routeDepartureCell.stationTitleLabel.text = "Откуда?"
                 return
@@ -88,15 +86,15 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
         }
         
         // host
-        selectedHostFetchedController = NSFetchedResultsController(fetchRequest: hostFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        selectedHostFetchedController.delegate = self
+        selectedFetchedController = NSFetchedResultsController(fetchRequest: hostFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        selectedFetchedController.delegate = self
         do {
-            try selectedHostFetchedController.performFetch()
+            try selectedFetchedController.performFetch()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
         
-        if let hostStation = selectedHostFetchedController.fetchedObjects?.first as? SelectedHostStation {
+        if let hostStation = selectedFetchedController.fetchedObjects?.first as? SelectedHostStation {
             guard let stationTitle = hostStation.stationTitle else {
                 routeHostCell.stationTitleLabel.text = "Куда?"
                 return
@@ -108,15 +106,15 @@ class RouteTableViewController: UITableViewController, NSFetchedResultsControlle
         
         // date
         
-        selectedDateFetchedController = NSFetchedResultsController(fetchRequest: dateFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        selectedDateFetchedController.delegate = self
+        selectedFetchedController = NSFetchedResultsController(fetchRequest: dateFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        selectedFetchedController.delegate = self
         do {
-            try selectedDateFetchedController.performFetch()
+            try selectedFetchedController.performFetch()
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
         
-        if let dateEntity = selectedDateFetchedController.fetchedObjects?.first as? SelectedDate {
+        if let dateEntity = selectedFetchedController.fetchedObjects?.first as? SelectedDate {
             guard let date = dateEntity.date else {
                 routeDateCell.dateLabel.text = "Дата отправления"
                 return

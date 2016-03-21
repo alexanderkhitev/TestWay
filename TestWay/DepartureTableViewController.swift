@@ -14,6 +14,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     
     // MARK: - var and let
     private var fetchedResultController: NSFetchedResultsController!
+    // сделанно два NSFetchedResultsController, так как они выполняют разную функцию, можно было бы реализовать используя лишь один NSFetchedResultsController, но это задел на будушие, так как например можно в функции setFetchedResultController извлечь еще какие либо данные с помощью fetchedResultController, но станции должны быть обязательно для поиска в UISearchController
     private var stationFetchedResultController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext! {
@@ -35,7 +36,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.definesPresentationContext = true
-        setSetting()
+        setUISetting()
     }
     
     override func didReceiveMemoryWarning() {
@@ -96,7 +97,7 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     // MARK: - functions
-    private func setSetting() {
+    private func setUISetting() {
         navigationController?.navigationBarHidden = false
         tabBarController?.tabBar.hidden = true
     }
@@ -124,6 +125,8 @@ class DepartureTableViewController: UITableViewController, NSFetchedResultsContr
             print(error.localizedDescription, error.userInfo)
         }
     }
+    
+    // MARK: - fetchRequests
     
     private func cityFetchResult() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "DepartureCity")

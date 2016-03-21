@@ -14,6 +14,7 @@ class HostTableViewController: UITableViewController, NSFetchedResultsController
     
     // MARK: - var and let
     private var fetchedResultController: NSFetchedResultsController!
+    // сделанно два NSFetchedResultsController, так как они выполняют разную функцию, можно было бы реализовать используя лишь один NSFetchedResultsController, но это задел на будушие, так как например можно в функции setFetchedResultController извлечь еще какие либо данные с помощью fetchedResultController, но станции должны быть обязательно для поиска в UISearchController
     private var stationFetchedResultController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext! {
