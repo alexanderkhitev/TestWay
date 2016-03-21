@@ -10,13 +10,14 @@ import UIKit
 import Foundation
 import CoreData
 
-class DateSelectorViewController: UIViewController {
+class DateSelectorViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - var and let
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var managedObjectContext: NSManagedObjectContext! {
         return appDelegate.managedObjectContext
     }
+    private var fetchedResultController: NSFetchedResultsController!
     
     // MARK: - IBOutlet
     @IBOutlet weak var datePicker: UIDatePicker! {
@@ -44,6 +45,7 @@ class DateSelectorViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func selectCurrentDate(sender: UIButton) {
+        removePreviousDate()
         let selectedDateEntity = NSEntityDescription.insertNewObjectForEntityForName("SelectedDate", inManagedObjectContext: managedObjectContext) as! SelectedDate
         selectedDateEntity.date = datePicker.date
         do {
@@ -60,7 +62,27 @@ class DateSelectorViewController: UIViewController {
     }
     
     private func removePreviousDate() {
-        
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+        guard let previousDate = fetchedResultController.fetchedObjects?.first as? SelectedDate else { return }
+        managedObjectContext.deleteObject(previousDate)
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+    }
+    
+    private func fetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "SelectedDate")
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
     }
 
     /*
